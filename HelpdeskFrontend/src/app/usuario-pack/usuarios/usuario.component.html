@@ -1,0 +1,33 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 my-md-3">
+            <button class="btn btn-success" routerLink="/cad-usuario">Novo usuário</button>
+        </div>
+    </div>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Login</th>
+                <th scope="col">Grupo de acesso</th>
+                <th scope="col">Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios">
+                <td>{{usuario.id}}</td>
+                <td>{{usuario.nomeUsuario}}</td>
+                <td>{{usuario.loginUsuario}}</td>
+                <td>{{usuario.grupoAcessoNome}}</td>
+                <td align="left">
+                    <button type="button" class="btn btn-success p-1" routerLink="/usuario-detalhe/{{usuario.id}}">
+                        <img src="/assets/icons/pencil_tip_32px_white.png" class="mr-1" width="20"/>
+                        <span>Editar</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

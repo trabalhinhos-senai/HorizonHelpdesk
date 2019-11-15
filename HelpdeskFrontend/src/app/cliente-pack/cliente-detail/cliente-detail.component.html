@@ -1,0 +1,81 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="container my-md-3">
+    <div class="justify-content-center d-flex h-100">
+        <form>
+            <button type="submit" class="btn btn-dark mb-md-4" routerLink="/clientes">Voltar</button>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nomeCliente">Nome</label>
+                    <input name="nomeCliente" type="text" class="form-control" id="nomeCliente" placeholder="Nome do Cliente"
+                    #nomeCliente="ngModel" [(ngModel)]="cliente.nome">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="cpfCnpjCliente">CNPJ / CPF</label>
+                    <input name="cpfCnpjCliente" type="text" class="form-control" id="cpfCnpjCliente" placeholder="CNPJ / CPF"
+                    #cpfCnpjCliente="ngModel" [(ngModel)]="cliente.cpfcnpj">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-10">
+                    <label for="enderecoCliente">Endereço</label>
+                    <input name="enderecoCliente" type="text" class="form-control" id="enderecoCliente" placeholder="Rua Adolfo Cristo ..."
+                    #enderecoCliente="ngModel" [(ngModel)]="cliente.endereco">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="numeroCliente">Número</label>
+                    <input name="numeroCliente" type="number" class="form-control" id="numeroCliente" placeholder="42..."
+                    #numeroCliente="ngModel" [(ngModel)]="cliente.numero">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="cidadeCliente">Cidade</label>
+                    <select name="cidadeCliente" id="cidadeCliente" class="form-control"
+                    #cidadeCliente="ngModel" [(ngModel)]="cliente.cidade">
+                        <option selected>Selecione...</option>
+                        <option>Ascurra</option>
+                        <option>Indaial</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="estadoCliente">Estado</label>
+                    <select name="estadoCliente" id="estadoCliente" class="form-control"
+                    #estadoCliente="ngModel" [(ngModel)]="cliente.estado">
+                        <option selected>Selecione...</option>
+                        <option>Santa Catarina</option>
+                        <option>Rio de Janeiro</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="bairroCliente">Bairro</label>
+                    <select name="bairroCliente" id="bairroCliente" class="form-control"
+                    #bairroCliente="ngModel" [(ngModel)]="cliente.bairro">
+                        <option selected>Selecione...</option>
+                        <option>Monte Alegre</option>
+                        <option>Tapajos</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="emailCliente">Email</label>
+                    <input name="emailCliente" type="email" class="form-control" id="emailCliente" placeholder="seuemail@seuemail.com.br"
+                    #emailCliente="ngModel" [(ngModel)]="cliente.email">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="telefoneCliente">Telefone</label>
+                    <input name="telefoneCliente" type="text" class="form-control" id="telefoneCliente" placeholder="3333-3333"
+                    #telefoneCliente="ngModel" [(ngModel)]="cliente.telefone">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="celularCliente">Celular</label>
+                    <input name="celularCliente" type="text" class="form-control" id="celularCliente" placeholder="99999-9999"
+                    #celularCliente="ngModel" [(ngModel)]="cliente.celular">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]>Atualizar cliente</button>
+        </form>
+    </div>
+</div>

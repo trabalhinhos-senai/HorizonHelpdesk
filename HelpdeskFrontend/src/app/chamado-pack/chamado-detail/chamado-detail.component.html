@@ -1,0 +1,126 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="container my-md-3">
+
+    <form #formChamado="ngForm">
+        <button type="submit" class="btn btn-dark mb-md-4 my-sm-2" routerLink="/chamados">Voltar</button>
+
+        <div class="form-row ">
+            <div class="form-group col-md-6">
+                <label for="inputSolicitante" class="required">Solicitante</label>
+                <input name="inputSolicitante" type="Text" class="form-control" id="inputSolicitante"
+                    #inputSolicitante="ngModel" [(ngModel)]="chamado.solicitante" required disabled>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputCliente" class="required">Cliente</label>
+                <input name="inputCliente" type="Text" class="form-control" id="inputCliente" #inputCliente="ngModel"
+                    [(ngModel)]="chamado.cliente" required disabled>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputTítulo" class="required">Título</label>
+                <input name="inputTítulo" type="Text" class="form-control" id="inputTítulo" #inputTítulo="ngModel"
+                    [(ngModel)]="chamado.titulo" required disabled>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="selectTipo" class="required">Tipo</label>
+                <div class="input-group">
+                    <select name="selectTipo" id="selectTipo" class="form-control" #selectTipo="ngModel"
+                        [(ngModel)]="chamado.tipo" required>
+                        <option selected>Interno</option>
+                        <option>Melhoria</option>
+                        <option>Correção</option>
+                        <option>Problema</option>
+                    </select>
+                    <div class="input-group-append ml-2">
+                        <button class="btn btn-outline-success" type="button" data-toggle="modal"
+                            data-target="#cadTipoModal">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="inputDescricao" class="required">Descrição</label>
+                <textarea name="inputDescricao" class="form-control" id="inputDescricao" rows="5"
+                    #inputDescricao="ngModel" [(ngModel)]="chamado.descricao" required disabled></textarea>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputResponsavel">Responsável</label>
+                <select name="inputResponsavel" id="inputResponsavel" class="form-control" #inputResponsavel="ngModel"
+                    [(ngModel)]="chamado.responsavel">
+                    <option selected></option>
+                    <option>Gabriel</option>
+                    <option>Jaison</option>
+                    <option>Igor</option>
+                    <option>Leonardo</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputPrioridade">Prioridade</label>
+                <select name="inputPrioridade" id="inputPrioridade" class="form-control" #inputPrioridade="ngModel"
+                    [(ngModel)]="chamado.prioridade">
+                    <option selected>Nenhuma</option>
+                    <option>Baixa</option>
+                    <option>Média</option>
+                    <option>Alta</option>
+                    <option>Crítica</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputDataAbertura" class="required">Data abertura</label>
+                <input name="inputDataAbertura" type="text" class="form-control" id="inputDataAbertura"
+                    #inputDataAbertura="ngModel" datetime="yyyy-MM-dd" [(ngModel)]="chamado.data_abertura" required
+                    disabled>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputDataAlvo">Data alvo</label>
+                <input name="inputDataAlvo" type="date" class="form-control" id="inputDataAlvo" #inputDataAlvo="ngModel"
+                    [(ngModel)]="chamado.data_alvo">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="inputStatus">Status</label>
+                <select name="inputStatus" id="inputStatus" class="form-control" #inputStatus="ngModel"
+                    [(ngModel)]="chamado.status">
+                    <option selected>Aguardando</option>
+                    <option>Em desenvolvimento</option>
+                    <option>Concluído</option>
+                </select>
+            </div>
+        </div>
+
+        <button id="btnAtualizarChamado" type="submit" class="btn btn-success mt-md-3" onclick="atualizaChamdo()">Atualizar chamado</button>
+    </form>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="cadTipoModal" tabindex="-1" role="dialog" aria-labelledby="cadTipoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cadTipoModalLabel">Cadastrar novo Tipo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #formCadTipo="ngForm" (ngSubmit)="onSubmit(formCadTipo)">
+                    <label for="inputCadTipo" class="required">Tipo</label>
+                    <input name="inputCadTipo" type="text" class="form-control" id="inputCadTipo" required>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Editar</button>
+                <button type="submit" class="btn btn-success">Adicionar</button>
+            </div>
+        </div>
+    </div>
+</div>

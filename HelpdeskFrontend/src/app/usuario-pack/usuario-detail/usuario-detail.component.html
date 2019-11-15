@@ -1,0 +1,49 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="container h-100 center-div my-md-3">
+    <div class="d-flex justify-content-center h-100">
+        <form #formUsuario="ngForm" (ngSubmit)="onSubmit(formUsuario)" class="col-8">
+            <button type="button" class="btn btn-dark mb-md-4" (click)="backLastPage()">Voltar</button>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="inputNome" class="required">Nome</label>
+                    <input name="inputNome" type="Text" class="form-control" id="inputNome" required
+                        #inputNome="ngModel" [(ngModel)]="usuario.nomeUsuario">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="inputLogin" class="required">Login</label>
+                    <input name="inputLogin" type="Text" class="form-control" id="inputLogin" required
+                        #inputLogin="ngModel" [(ngModel)]="usuario.loginUsuario">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="inputSenha" class="required">Nova senha</label>
+                    <input [pattern]="selecaoPadrao" name="inputSenha" type="password" class="form-control"
+                        id="inputSenha" required #inputSenha="ngModel" [(ngModel)]="usuario.senhaUsuario">
+                    <!-- <small *ngIf="inputSenha.errors&&inputSenha.errors.pattern">{{errorMgs}}</small> -->
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="selectGrupoAcesso" class="required">Grupo de acesso</label>
+                    <select name="selectGrupoAcesso" class="form-control" id="selectGrupoAcesso" required
+                        #selectGrupoAcesso="ngModel" [(ngModel)]="usuario.grupoAcessoNome">
+                        <option selected>User</option>
+                        <option>Admin</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success mt-md-3" [disabled]="!formUsuario.valid">
+                Editar usuário</button>
+        </form>
+    </div>
+</div>
+
+<!-- Caixa de mensagem CADASTRADO -->
+<div *ngIf="cadastrado" id="alertSucesso" class="alert alert-success box-msg" align="center" role="alert">
+    Usuario cadastrado com sucesso!
+</div>
