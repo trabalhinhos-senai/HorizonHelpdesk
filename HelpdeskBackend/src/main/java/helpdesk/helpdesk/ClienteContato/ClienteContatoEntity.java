@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import helpdesk.helpdesk.Cliente.ClienteEntity;
 
 @Entity (name = "tb_cliente_contato")
 public class ClienteContatoEntity {
@@ -14,6 +17,9 @@ public class ClienteContatoEntity {
 	private String email;
 	private String telefone;
 	private String celular;
+	
+	@ManyToOne
+	private ClienteEntity clienteEntity;
 	
 	public ClienteContatoEntity() {
 	}
@@ -31,31 +37,48 @@ public class ClienteContatoEntity {
 				+ "]";
 	}
 	
+	//--------------
 	public Long getId() {
 		return id;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public String getTelefone() {
+		return telefone;
+	}
+	
+	public String getCelular() {
+		return celular;
+	}
+	
+	public ClienteEntity getClienteEntity() {
+		return clienteEntity;
+	}
+	
+	//-----------------
 	public void setId(Long id) {
 		if(id != null)
 		this.id = id;
 	}
-	public String getEmail() {
-		return email;
-	}
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getTelefone() {
-		return telefone;
-	}
+
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public String getCelular() {
-		return celular;
-	}
+
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
 	
+	public void setClienteEntity(ClienteEntity clienteEntity) {
+		this.clienteEntity = clienteEntity;
+	}
 	
-}
+}	
+	

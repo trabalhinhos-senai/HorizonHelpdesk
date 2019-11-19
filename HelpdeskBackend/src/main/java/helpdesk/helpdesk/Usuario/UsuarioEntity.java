@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import helpdesk.helpdesk.Config.ConfigEntity;
 import helpdesk.helpdesk.GrupoAcesso.GrupoAcessoEntity;
 
 @Entity
@@ -24,6 +25,9 @@ public class UsuarioEntity  {
 	@ManyToOne
 	private GrupoAcessoEntity grupoAcesso;
 	
+	@ManyToOne
+	private ConfigEntity configEntity;
+
 	
 	protected UsuarioEntity() {
 	}
@@ -42,6 +46,7 @@ public class UsuarioEntity  {
 		return "UsuarioEntity [id=" + id + ", nomeUsuario=" + nomeUsuario + ", loginUsuario=" + loginUsuario + ", senhaUsuario=" + senhaUsuario + "]";
 	}
 	
+	//----------
 	public Long getId() {
 		return id;
 	}
@@ -61,7 +66,12 @@ public class UsuarioEntity  {
 	public GrupoAcessoEntity getGrupoAcesso() {
 		return grupoAcesso;
 	}
+	
+	public ConfigEntity getConfigEntity() {
+		return configEntity;
+	}
 
+	//----------------
 	public void setId(Long id) {
 		if(id != null)
 			this.id = id;
@@ -84,6 +94,10 @@ public class UsuarioEntity  {
 
 	public void setGrupoAcesso(GrupoAcessoEntity grupoAcesso) {
 		this.grupoAcesso = grupoAcesso;
+	}
+	
+	public void setConfigEntity(ConfigEntity configEntity) {
+		this.configEntity = configEntity;
 	}
 	
 }

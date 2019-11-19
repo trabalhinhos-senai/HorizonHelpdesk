@@ -7,6 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import helpdesk.helpdesk.Cliente.ClienteEntity;
+import helpdesk.helpdesk.TipoAtividade.TipoAtividadeEntity;
+import helpdesk.helpdesk.Usuario.UsuarioEntity;
 
 @Entity
 (name = "tb_chamado")
@@ -24,7 +29,15 @@ public class ChamadoEntity {
 
 	private  String prioridadeChamado;
 	
-		
+	@ManyToOne
+	private ClienteEntity clienteEntity;
+	
+	@ManyToOne
+	private TipoAtividadeEntity tipoAtividadeEntity;
+	
+	@ManyToOne
+	private UsuarioEntity usuarioEntity;
+	
 	
 	protected ChamadoEntity() {
 		
@@ -50,6 +63,12 @@ public class ChamadoEntity {
 				+ descricao + ", status=" + status + ", dataAbertura=" + dataAbertura + ", dataAlvo=" + dataAlvo
 				+  ", prioridadeChamado=" + prioridadeChamado + "]";
 	}
+	
+	
+
+	
+
+
 
 	//Getters
 	public Long getId() {
@@ -83,7 +102,19 @@ public class ChamadoEntity {
 	public String getStatus() {
 		return status;
 	}
-
+	
+	public ClienteEntity getClienteEntity() {
+		return clienteEntity;
+	}
+	
+	public TipoAtividadeEntity getTipoAtividadeEntity() {
+		return tipoAtividadeEntity;
+	}
+	
+	public UsuarioEntity getUsuarioEntity() {
+		return usuarioEntity;
+	}
+	
 	//Setters
 	public void setId(Long id) {
 		if(id != null)
@@ -125,5 +156,16 @@ public class ChamadoEntity {
 			this.status = status;
 	}
 	
+	public void setClienteEntity(ClienteEntity clienteEntity) {
+		this.clienteEntity = clienteEntity;
+	}
+
+	public void setTipoAtividadeEntity(TipoAtividadeEntity tipoAtividadeEntity) {
+		this.tipoAtividadeEntity = tipoAtividadeEntity;
+	}
+
+	public void setUsuarioEntity(UsuarioEntity usuarioEntity) {
+		this.usuarioEntity = usuarioEntity;
+	}
 		
 }

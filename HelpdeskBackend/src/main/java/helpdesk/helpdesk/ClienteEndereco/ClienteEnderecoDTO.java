@@ -21,10 +21,6 @@ public class ClienteEnderecoDTO {
 		this.estado = estado;
 	}
 
-	public static ClienteEnderecoDTO getNullValue() {
-		return NULL_VALUE;
-	}
-
 	public Long getId() {
 		return id;
 	}

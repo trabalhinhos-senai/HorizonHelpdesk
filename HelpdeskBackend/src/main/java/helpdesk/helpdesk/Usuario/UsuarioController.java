@@ -31,8 +31,9 @@ public class UsuarioController {
 		final String senhaUsuario = usuarioEntity.getSenhaUsuario();
 		
 		final String grupoAcessoNome = usuarioEntity.getGrupoAcesso().getNomeGrupo();
+		final Long configEntityId = usuarioEntity.getConfigEntity().getId();
 		
-		return new UsuarioDTO(id, nomeUsuario, loginUsuario, senhaUsuario, grupoAcessoNome);
+		return new UsuarioDTO(id, nomeUsuario, loginUsuario, senhaUsuario, grupoAcessoNome, configEntityId);
 	}
 	
 	private static void updateEntityFromDTO(final UsuarioDTO usuarioDTO, final UsuarioEntity usuarioEntity) {

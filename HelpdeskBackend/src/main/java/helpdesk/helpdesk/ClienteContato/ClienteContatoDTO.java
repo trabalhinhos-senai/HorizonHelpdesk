@@ -17,10 +17,6 @@ public class ClienteContatoDTO {
 		this.celular = celular;
 	}
 
-	public static ClienteContatoDTO getNullValue() {
-		return NULL_VALUE;
-	}
-
 	public Long getId() {
 		return id;
 	}
