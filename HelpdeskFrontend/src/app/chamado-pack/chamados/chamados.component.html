@@ -26,12 +26,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let chamado of Chamados">
+            <tr *ngFor="let chamado of chamados">
                 <td>{{chamado.id}}</td>
                 <td>{{chamado.titulo}}</td>
                 <td>{{chamado.solicitante}}</td>
                 <td>{{chamado.status}}</td>
-                <td>{{chamado.data_abertura}}</td>
+                <td>{{chamado.dataAbertura}}</td>
                 <td>
                     <button type="button" class="btn btn-success" routerLink="/chamado-detalhe/{{chamado.id}}">
                         Detalhes

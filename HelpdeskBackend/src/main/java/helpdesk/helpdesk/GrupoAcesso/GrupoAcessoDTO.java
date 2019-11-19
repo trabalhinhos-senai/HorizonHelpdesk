@@ -1,8 +1,6 @@
 package helpdesk.helpdesk.GrupoAcesso;
 
-import java.io.Serializable;
-
-public class GrupoAcessoDTO implements Serializable {
+public class GrupoAcessoDTO {
 	
 	public static final GrupoAcessoDTO NULL_VALUE = new GrupoAcessoDTO(-1l,"");
 	private Long id;

@@ -1,5 +1,7 @@
 package helpdesk.helpdesk.Chamado;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,8 +19,8 @@ public class ChamadoEntity {
 	private  String titulo;
 	private  String descricao;
 	private  String status;
-	private  String dataAbertura;
-	private  String dataAlvo;
+	private  Date dataAbertura;
+	private  Date dataAlvo;
 
 	private  String prioridadeChamado;
 	
@@ -29,7 +31,7 @@ public class ChamadoEntity {
 	}
 	
 	public ChamadoEntity(Long id, String solicitante, String titulo, String descricao, String status,
-			String dataAbertura, String dataAlvo, String prioridadeChamado) {
+			Date dataAbertura, Date dataAlvo, String prioridadeChamado) {
 		
 		this.id = id;
 		this.solicitante = solicitante;
@@ -66,11 +68,11 @@ public class ChamadoEntity {
 		return descricao;
 	}
 
-	public String getDataAbertura() {
+	public Date getDataAbertura() {
 		return dataAbertura;
 	}
 
-	public String getDataAlvo() {
+	public Date getDataAlvo() {
 		return dataAlvo;
 	}
 
@@ -103,12 +105,12 @@ public class ChamadoEntity {
 			this.descricao = descricao;
 	}
 
-	public void setDataAbertura(String dataAbertura) {
+	public void setDataAbertura(Date dataAbertura) {
 		if(dataAbertura != null)
 			this.dataAbertura = dataAbertura;
 	}
 
-	public void setDataAlvo(String dataAlvo) {
+	public void setDataAlvo(Date dataAlvo) {
 		if(dataAlvo != null)
 			this.dataAlvo = dataAlvo;
 	}

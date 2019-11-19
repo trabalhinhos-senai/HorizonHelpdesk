@@ -1,21 +1,21 @@
 package helpdesk.helpdesk.Chamado;
 
+import java.sql.Date;
+
 public class ChamadoDTO {
 	
-	 public static final ChamadoDTO NULL_VALUE = new ChamadoDTO(-1l, "", "", "", "", "", "","");
+	 public static final ChamadoDTO NULL_VALUE = new ChamadoDTO(-1l, "", "", "", "", null, null,"");
 	 
  	 private final Long id;
 	 private final String solicitante;
 	 private final String titulo;
 	 private final String descricao;
 	 private final String status;
-	 private final String dataAbertura;
-	 private final String dataAlvo;
+	 private final Date dataAbertura;
+	 private final Date dataAlvo;
 	 private final String prioridadeChamado;
-	
-	
 	 
-	 public ChamadoDTO(Long id, String solicitante, String titulo, String descricao, String status, String dataAbertura, String dataAlvo, String prioridadeChamado) {
+	 public ChamadoDTO(Long id, String solicitante, String titulo, String descricao, String status, Date dataAbertura, Date dataAlvo, String prioridadeChamado) {
 		this.id = id;
 		this.status = status;
 		this.solicitante = solicitante;
@@ -41,10 +41,10 @@ public class ChamadoDTO {
 	public String getDescricao() {
 		return descricao;
 	}
-	public String getDataAbertura() {
+	public Date getDataAbertura() {
 		return dataAbertura;
 	}
-	public String getDataAlvo() {
+	public Date getDataAlvo() {
 		return dataAlvo;
 	}
 	

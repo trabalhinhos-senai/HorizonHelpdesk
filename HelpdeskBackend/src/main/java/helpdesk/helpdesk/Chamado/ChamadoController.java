@@ -2,6 +2,7 @@ package helpdesk.helpdesk.Chamado;
 
 
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,8 +23,8 @@ public class ChamadoController {
 		final String titulo = chamadoDTO.getTitulo();
 		final String descricao = chamadoDTO.getDescricao();
 		final String status = chamadoDTO.getStatus();
-		final String dataAbertura = chamadoDTO.getDataAbertura();
-		final String dataAlvo = chamadoDTO.getDataAlvo();
+		final Date dataAbertura = chamadoDTO.getDataAbertura();
+		final Date dataAlvo = chamadoDTO.getDataAlvo();
 		
 		final String prioridadeChamado = chamadoDTO.getPrioridadeChamado();
 		
@@ -36,8 +37,8 @@ public class ChamadoController {
 		final String titulo = chamadoEntity.getTitulo();
 		final String descricao = chamadoEntity.getDescricao();
 		final String status = chamadoEntity.getStatus();
-		final String dataAbertura = chamadoEntity.getDataAbertura();
-		final String dataAlvo = chamadoEntity.getDataAlvo();
+		final Date dataAbertura = chamadoEntity.getDataAbertura();
+		final Date dataAlvo = chamadoEntity.getDataAlvo();
 		final String prioridadeChamado = chamadoEntity.getPrioridadeChamado();
 		return new ChamadoDTO(id, solicitante, titulo, descricao, status, dataAbertura, dataAlvo, prioridadeChamado);
 	}

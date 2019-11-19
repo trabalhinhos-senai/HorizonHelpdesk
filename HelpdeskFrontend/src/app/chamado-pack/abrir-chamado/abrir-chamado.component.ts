@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AbrirChamadoComponent implements OnInit {
 
-  private chamado: Chamado = new Chamado();
+  //private chamado: Chamado = new Chamado();
   public aberto = false;
 
   constructor(private abrirChamadoService: AbrirChamadoService) { }
@@ -19,7 +19,7 @@ export class AbrirChamadoComponent implements OnInit {
   }
 
   onSubmit(formulario: NgForm) {
-    if (formulario.valid) {
+    /*if (formulario.valid) {
 
       this.chamado.id =  
       Math.random().toString(36).substring(2, 15) 
@@ -28,7 +28,7 @@ export class AbrirChamadoComponent implements OnInit {
         console.log(this.chamado)
         this.abrirChamadoService.abrirChamado(this.chamado);
         this.showAlert();
-    }
+    }*/
   }
 
   showAlert() {

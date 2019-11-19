@@ -12,7 +12,7 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Login</th>
                 <th scope="col">Grupo de acesso</th>
-                <th scope="col">Editar</th>
+                <th scope="col">Ação</th>
             </tr>
         </thead>
         <tbody>
@@ -22,9 +22,11 @@
                 <td>{{usuario.loginUsuario}}</td>
                 <td>{{usuario.grupoAcessoNome}}</td>
                 <td align="left">
-                    <button type="button" class="btn btn-success p-1" routerLink="/usuario-detalhe/{{usuario.id}}">
-                        <img src="/assets/icons/pencil_tip_32px_white.png" class="mr-1" width="20"/>
-                        <span>Editar</span>
+                    <button type="button" class="btn btn-success p-1 mr-1" routerLink="/usuario-detalhe/{{usuario.id}}">
+                        <img src="/assets/icons/pencil_tip_32px_white.png" width="20"/>
+                    </button>
+                    <button type="button" class="btn btn-danger p-1" (click)="deleteUser(usuario.id)">
+                        <img src="/assets/icons/delete_32px_white.png" width="20"/>
                     </button>
                 </td>
             </tr>

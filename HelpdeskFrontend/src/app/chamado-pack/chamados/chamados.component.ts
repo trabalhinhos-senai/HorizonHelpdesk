@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Chamados } from '../chamados';
-import { AbrirChamadoService } from '../abrir-chamado/abrir-chamado.service';
+import { Chamado } from '../chamados';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ChamadosService } from './chamados.service';
 
 
 @Component({
@@ -11,17 +11,27 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ChamadosComponent implements OnInit {
 
-  Chamados = Chamados;
+  //Chamados = Chamados;
   //nrChamado = (<HTMLInputElement>document.getElementById('inputPesquisa')).value;
+  private chamados: Chamado[];
 
   constructor(
-    private chamadoService: AbrirChamadoService,
+    private chamadoService: ChamadosService,
     private route: ActivatedRoute,
     private router: Router) 
     { }
 
   ngOnInit() {
-    this.Chamados = this.chamadoService.getChamados()
+    this.loadChamados();
+    //this.Chamados = this.chamadoService.getChamados()
+  }
+
+  loadChamados(): void {
+    //this.products = this.productService.getProducts();
+    this.chamadoService.getAllChamados().subscribe(
+      chamados => {
+        this.chamados = chamados;
+        console.log(this.chamados)});
   }
 
   procuraChamado(nrChamado: string){

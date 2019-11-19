@@ -31,7 +31,7 @@ public class ChamadoService {
     }
 	
 	@GetMapping("/get/{id}")
-	public ResponseEntity<ChamadoDTO> getUsuario(@PathVariable(value = "id") @Valid Long id) {
+	public ResponseEntity<ChamadoDTO> getChamado(@PathVariable(value = "id") @Valid Long id) {
 		final ChamadoDTO chamadoDTO = this.chamadoController.getChamado(id);
 		if(chamadoDTO.equals(ChamadoDTO.NULL_VALUE)){
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -40,7 +40,7 @@ public class ChamadoService {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<ChamadoDTO> removeUsuario(@PathVariable final Long id){
+	public ResponseEntity<ChamadoDTO> removeChamado(@PathVariable final Long id){
 		final ChamadoDTO removedChamado = this.chamadoController.removeChamado(id);
 		if(removedChamado.equals(ChamadoDTO.NULL_VALUE)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -58,7 +58,7 @@ public class ChamadoService {
 	}
 	
 	@PostMapping
-	public Long insertUsuario(@RequestBody final ChamadoDTO chamadoDTO){
+	public Long insertChamado(@RequestBody final ChamadoDTO chamadoDTO){
 		return this.chamadoController.insertChamado(chamadoDTO);
 	}
 	

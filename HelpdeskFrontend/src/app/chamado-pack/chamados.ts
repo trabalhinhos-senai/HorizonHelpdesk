@@ -1,4 +1,4 @@
-export const Chamados = [
+/*export const Chamados = [
     {
         id: "1",
         solicitante: "Igor Ponchielli",
@@ -25,10 +25,10 @@ export const Chamados = [
         data_alvo: new Date("2019-09-12 00:00:00").toISOString().slice(0,10),
         status: "Aguardando"
     }
-]
+]*/
 
 export class Chamado {
-    id: string;
+    /*id: Number;
     solicitante: string;
     cliente: string;
     titulo: string;
@@ -36,6 +36,15 @@ export class Chamado {
     descricao: string;
     responsavel: string;
     prioridade: string;
-    data_abertura: string;
-    data_alvo: Date;
+    data_abertura: Date;
+    data_alvo: Date;*/
+
+    id: Number;
+    solicitante: string;
+    titulo: string;
+    descricao: string;
+    status: string;
+    dataAbertura: string;
+    dataAlvo: string;
+    prioridadeChamado: string
 }

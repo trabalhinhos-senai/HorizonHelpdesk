@@ -7,10 +7,11 @@ import { Usuario } from '../usuarios';
   templateUrl: './usuario.component.html',
   styleUrls: ['./usuario.component.css']
 })
-export class UsuarioComponent implements OnInit{
+export class UsuarioComponent implements OnInit {
 
   //Usuarios = Usuarios;
-  private usuarios : Usuario[];
+  private usuarios: Usuario[];
+  private usuarioAtual = new Usuario;
 
   constructor(private usuarioService: UsuarioService) { }
 
@@ -25,9 +26,15 @@ export class UsuarioComponent implements OnInit{
       usuarios => {
         this.usuarios = usuarios;
       });
+  }
 
-      
+  deleteUser(id) {
+    this.usuarioService.deleteUser(id).subscribe(
+      usuario => {
+        this.usuarioAtual = usuario;
+      });
 
+      console.log(this.usuarioAtual);
   }
 
 }
