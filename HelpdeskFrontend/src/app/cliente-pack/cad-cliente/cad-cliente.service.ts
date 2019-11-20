@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Clientes } from '../clientes';
+import { Cliente } from '../clientes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CadClienteService {
 
-  Clientes = Clientes;
+  //Clientes = Clientes;
 
   constructor() { }
 
-  cadCliente(clientes: any) {
+  /*cadCliente(clientes: any) {
     this.Clientes.push(clientes);
   }
 
@@ -27,5 +27,5 @@ export class CadClienteService {
         return clientes;
       }   
     }    
-  }
+  }*/
 }

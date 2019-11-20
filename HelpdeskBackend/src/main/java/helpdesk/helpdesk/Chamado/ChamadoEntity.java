@@ -30,13 +30,13 @@ public class ChamadoEntity {
 	private  String prioridadeChamado;
 	
 	@ManyToOne
-	private ClienteEntity clienteEntity;
+	private ClienteEntity cliente;
 	
 	@ManyToOne
-	private TipoAtividadeEntity tipoAtividadeEntity;
+	private TipoAtividadeEntity tipoAtividade;
 	
 	@ManyToOne
-	private UsuarioEntity usuarioEntity;
+	private UsuarioEntity resposavel;
 	
 	
 	protected ChamadoEntity() {
@@ -104,15 +104,15 @@ public class ChamadoEntity {
 	}
 	
 	public ClienteEntity getClienteEntity() {
-		return clienteEntity;
+		return cliente;
 	}
 	
 	public TipoAtividadeEntity getTipoAtividadeEntity() {
-		return tipoAtividadeEntity;
+		return tipoAtividade;
 	}
 	
 	public UsuarioEntity getUsuarioEntity() {
-		return usuarioEntity;
+		return resposavel;
 	}
 	
 	//Setters
@@ -157,15 +157,15 @@ public class ChamadoEntity {
 	}
 	
 	public void setClienteEntity(ClienteEntity clienteEntity) {
-		this.clienteEntity = clienteEntity;
+		this.cliente = clienteEntity;
 	}
 
 	public void setTipoAtividadeEntity(TipoAtividadeEntity tipoAtividadeEntity) {
-		this.tipoAtividadeEntity = tipoAtividadeEntity;
+		this.tipoAtividade = tipoAtividadeEntity;
 	}
 
 	public void setUsuarioEntity(UsuarioEntity usuarioEntity) {
-		this.usuarioEntity = usuarioEntity;
+		this.resposavel = usuarioEntity;
 	}
 		
 }

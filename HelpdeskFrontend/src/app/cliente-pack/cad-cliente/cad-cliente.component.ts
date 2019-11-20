@@ -19,7 +19,7 @@ export class CadClienteComponent implements OnInit {
   }
 
   onSubmit(formulario: NgForm) {
-    if (formulario.valid) {
+    /*if (formulario.valid) {
       this.cliente.id =  
       Math.random().toString(36).substring(2, 15) 
       + Math.random().toString(36).substring(2, 15);
@@ -27,7 +27,7 @@ export class CadClienteComponent implements OnInit {
         console.log(this.cliente)
         this.cadClienteService.cadCliente(this.cliente);
         this.showAlert();
-    }
+    }*/
   }
 
   showAlert() {

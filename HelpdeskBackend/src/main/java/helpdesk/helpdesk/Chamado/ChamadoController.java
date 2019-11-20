@@ -40,7 +40,14 @@ public class ChamadoController {
 		final Date dataAbertura = chamadoEntity.getDataAbertura();
 		final Date dataAlvo = chamadoEntity.getDataAlvo();
 		final String prioridadeChamado = chamadoEntity.getPrioridadeChamado();
-		return new ChamadoDTO(id, solicitante, titulo, descricao, status, dataAbertura, dataAlvo, prioridadeChamado);
+		final Long clienteId = chamadoEntity.getClienteEntity().getId();
+		final String clienteNome = chamadoEntity.getClienteEntity().getNomeCliente();
+		final Long responsavelId = chamadoEntity.getUsuarioEntity().getId();
+		final String responsaveNome = chamadoEntity.getUsuarioEntity().getNomeUsuario();
+		final Long tipoAtividadeId = chamadoEntity.getTipoAtividadeEntity().getId();
+		final String tipoAtividadeNome = chamadoEntity.getTipoAtividadeEntity().getDescricao();
+		return new ChamadoDTO(id, solicitante, titulo, descricao, status, dataAbertura, dataAlvo, prioridadeChamado, clienteId, clienteNome,
+				responsavelId, responsaveNome, tipoAtividadeId, tipoAtividadeNome);
 	}
 	
 	private static void updateEntityFromDTO(final ChamadoDTO chamadoDTO, final ChamadoEntity chamadoEntity) {
@@ -51,7 +58,7 @@ public class ChamadoController {
 		chamadoEntity.setStatus(chamadoDTO.getStatus());
 		chamadoEntity.setDataAbertura(chamadoDTO.getDataAbertura());
 		chamadoEntity.setDataAlvo(chamadoDTO.getDataAlvo());
-		
+
 		chamadoEntity.setPrioridadeChamado(chamadoDTO.getPrioridadeChamado());
 			
 	}

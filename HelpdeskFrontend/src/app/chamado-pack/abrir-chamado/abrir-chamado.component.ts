@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AbrirChamadoService } from './abrir-chamado.service';
 import { Chamado } from '../chamados';
 import { NgForm } from '@angular/forms';
+import { ChamadosService } from '../chamados/chamados.service';
+import { Cliente } from 'src/app/cliente-pack/clientes';
+import { ClientesService } from 'src/app/cliente-pack/clientes/clientes.service';
 
 @Component({
   selector: 'app-abrir-chamado',
@@ -10,25 +12,35 @@ import { NgForm } from '@angular/forms';
 })
 export class AbrirChamadoComponent implements OnInit {
 
-  //private chamado: Chamado = new Chamado();
+  private chamado: Chamado = new Chamado();
+  private clientes: Cliente[];
   public aberto = false;
 
-  constructor(private abrirChamadoService: AbrirChamadoService) { }
+  constructor(private chamadoService: ChamadosService,
+              private clienteService: ClientesService) { }
 
   ngOnInit() {
+    this.loadClientes();
   }
 
   onSubmit(formulario: NgForm) {
-    /*if (formulario.valid) {
+    if (formulario.valid) {
 
-      this.chamado.id =  
-      Math.random().toString(36).substring(2, 15) 
-      + Math.random().toString(36).substring(2, 15);
+      this.chamadoService.createChamado(this.chamado).subscribe(
+        id => {
+          this.chamado = new Chamado();
+          this.showAlert();
+        }
+      );
+    }
+  }
 
-        console.log(this.chamado)
-        this.abrirChamadoService.abrirChamado(this.chamado);
-        this.showAlert();
-    }*/
+  loadClientes(): void {
+    //this.products = this.productService.getProducts();
+    this.clienteService.getAllClientes().subscribe(
+      clientes => {
+        this.clientes = clientes;
+      });
   }
 
   showAlert() {

@@ -1,4 +1,4 @@
-export const Clientes = [
+/*export const Clientes = [
     {
         id: "1",
         nome: "Cooper",
@@ -25,12 +25,14 @@ export const Clientes = [
         telefone: "33223232",
         celular: "99083633",
     }
-]
+]*/
 
 export class Cliente {
-    id: String;
-    nome: String;
-    cpfcnpj: String;
+    
+    id: Number;
+    nomeCliente: String;
+    cpfOuCnpj: String;
+
     endereco: String;
     numero: String;
     cidade: String;

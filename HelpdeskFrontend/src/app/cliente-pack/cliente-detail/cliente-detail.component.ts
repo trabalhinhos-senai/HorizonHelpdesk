@@ -17,14 +17,14 @@ export class ClienteDetailComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getCliente();
+    //this.getCliente();
   }
 
   getCliente() {
-    const id: string = this.route.snapshot.paramMap.get('id');
+    /*const id: string = this.route.snapshot.paramMap.get('id');
     this.cliente = this.clienteService.getClienteById(id);
 
-    console.log(this.clienteService.getClienteById(id))
+    console.log(this.clienteService.getClienteById(id))*/
   }
 
 }

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/chamado")
+@RequestMapping("/api/chamado")
 public class ChamadoService {
 
 	private final ChamadoController chamadoController;

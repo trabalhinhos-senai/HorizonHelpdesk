@@ -10,7 +10,7 @@ import { Chamado } from '../chamados';
 export class ChamadosService {
 
   // Define API
-  apiURL = 'http://localhost:8080';
+  apiURL = '/api';
 
   constructor(private http: HttpClient) { }
 

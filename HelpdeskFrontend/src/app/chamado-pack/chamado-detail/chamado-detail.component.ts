@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AbrirChamadoService } from '../abrir-chamado/abrir-chamado.service';
 import { ActivatedRoute } from '@angular/router';
+import { Chamado } from '../chamados';
+import { ChamadosService } from '../chamados/chamados.service';
+import { NgForm } from '@angular/forms';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -11,26 +15,43 @@ import { ActivatedRoute } from '@angular/router';
 
 export class ChamadoDetailComponent implements OnInit {
 
-  chamado: any = new Object();
-  
+  private chamado: Chamado = new Chamado();
+  private id: String;
+
   constructor(
     private route: ActivatedRoute,
-    private chamadoService: AbrirChamadoService
+    private _location: Location,
+    private chamadoService: ChamadosService
     ) { }
 
   ngOnInit(): void {
+    //this.usuario = new Usuario;
+    
+    this.id = this.route.snapshot.paramMap.get('id');
     this.getChamado();
   }
 
-  getChamado() {
-    const id: string = this.route.snapshot.paramMap.get('id');
-    this.chamado = this.chamadoService.getChamadoById(id);
-
-    console.log(this.chamadoService.getChamadoById(id))
+  onSubmit(formChamado: NgForm) {
+    if (formChamado.valid) {
+      console.log(this.chamado)
+      this.chamadoService.updateChamado(this.id, this.chamado).subscribe(
+        chamado => {
+          this.chamado = chamado;
+          this.backLastPage();
+        }
+      );
+    }
   }
 
-  atualizaChamado() {
-    //back-end salvar no banco as alterações
-    //Caso inputStatus == Concluído, remover da tabela de consulta, MAS NÃO DO BANCO, MONGOL
+  getChamado() {
+    this.chamadoService.getChamado(this.id).subscribe(
+      chamado => {
+        console.log(chamado)
+        this.chamado = chamado;
+      })
+  }
+
+  backLastPage() {
+    this._location.back();
   }
 }

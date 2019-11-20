@@ -16,9 +16,11 @@
                     #inputSolicitante="ngModel" [(ngModel)]="chamado.solicitante" required>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputCliente" class="required">Cliente</label>
-                <input name="inputCliente" type="Text" class="form-control" id="inputCliente" #inputCliente="ngModel"
-                    [(ngModel)]="chamado.cliente" required>
+                <label for="selectCliente" class="required">Cliente</label>
+                <select name="selectCliente" class="form-control" id="selectCliente" #selectCliente="ngModel"
+                    [(ngModel)]="chamado.clienteNome" required>
+                    <option *ngFor="let cliente of clientes" (click)="chamado.clienteId = cliente.id">{{cliente.nomeCliente}}</option>
+                </select>
             </div>
         </div>
         <div class="form-row">
@@ -31,7 +33,7 @@
                 <label for="selectTipo" class="required">Tipo</label>
                 <div class="input-group">
                     <select name="selectTipo" id="selectTipo" class="form-control" #selectTipo="ngModel"
-                        [(ngModel)]="chamado.tipo" required>
+                        [(ngModel)]="chamado.tipoAtividade" required>
                         <option selected>Interno</option>
                         <option>Melhoria</option>
                         <option>Correção</option>
@@ -57,7 +59,7 @@
             <div class="form-group col-md-4">
                 <label for="inputResponsavel">Responsável</label>
                 <select name="inputResponsavel" id="inputResponsavel" class="form-control" #inputResponsavel="ngModel"
-                    [(ngModel)]="chamado.responsavel">
+                    [(ngModel)]="chamado.responsavelNome">
                     <option selected></option>
                     <option>Gabriel</option>
                     <option>Jaison</option>
@@ -68,7 +70,7 @@
             <div class="form-group col-md-2">
                 <label for="inputPrioridade">Prioridade</label>
                 <select name="inputPrioridade" id="inputPrioridade" class="form-control" #inputPrioridade="ngModel"
-                    [(ngModel)]="chamado.prioridade">
+                    [(ngModel)]="chamado.prioridadeChamado">
                     <option selected>Nenhuma</option>
                     <option>Baixa</option>
                     <option>Média</option>
@@ -79,16 +81,17 @@
             <div class="form-group col-md-3">
                 <label for="inputDataAbertura" class="required">Data abertura</label>
                 <input name="inputDataAbertura" type="date" class="form-control" id="inputDataAbertura"
-                    #inputDataAbertura="ngModel" [(ngModel)]="chamado.data_abertura" required>
+                    #inputDataAbertura="ngModel" [(ngModel)]="chamado.dataAbertura" required>
             </div>
             <div class="form-group col-md-3">
                 <label for="inputDataAlvo">Data alvo</label>
                 <input name="inputDataAlvo" type="date" class="form-control" id="inputDataAlvo" #inputDataAlvo="ngModel"
-                    [(ngModel)]="chamado.data_alvo">
+                    [(ngModel)]="chamado.dataAlvo">
             </div>
         </div>
 
-        <button type="submit" class="btn btn-success mt-md-3" [disabled]="!formChamado.valid">Cadastrar chamado</button>
+        <button type="submit" class="btn btn-success mt-md-3" [disabled]="!formChamado.valid"
+            (click)="chamado.status = 'Aberto'">Cadastrar chamado</button>
     </form>
 </div>
 

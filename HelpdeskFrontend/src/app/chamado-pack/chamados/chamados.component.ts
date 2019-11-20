@@ -23,11 +23,9 @@ export class ChamadosComponent implements OnInit {
 
   ngOnInit() {
     this.loadChamados();
-    //this.Chamados = this.chamadoService.getChamados()
   }
 
   loadChamados(): void {
-    //this.products = this.productService.getProducts();
     this.chamadoService.getAllChamados().subscribe(
       chamados => {
         this.chamados = chamados;

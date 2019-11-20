@@ -21,7 +21,7 @@
                 <th scope="col">Titulo</th>
                 <th scope="col">Responsável</th>
                 <th scope="col">Status</th>
-                <th scope="col">Abertura</th>
+                <th scope="col">Data alvo</th>
                 <th scope="col">Detalhes</th>
             </tr>
         </thead>
@@ -31,7 +31,7 @@
                 <td>{{chamado.titulo}}</td>
                 <td>{{chamado.solicitante}}</td>
                 <td>{{chamado.status}}</td>
-                <td>{{chamado.dataAbertura}}</td>
+                <td>{{chamado.dataAlvo}}</td>
                 <td>
                     <button type="button" class="btn btn-success" routerLink="/chamado-detalhe/{{chamado.id}}">
                         Detalhes
