@@ -1,5 +1,6 @@
 package helpdesk.helpdesk.TipoAtividade;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -19,10 +20,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/tipoatividade")
 public class TipoAtividadeService {
 
+	private static final TipoAtividadeDTO[] DEFAULT_TIPOATIVIDADE = new TipoAtividadeDTO [] {
+			new TipoAtividadeDTO(1l, "teste")
+		};
+
 		private final TipoAtividadeController tipoAtividadeController;
 		
 		TipoAtividadeService(final TipoAtividadeController tipoAtividadeController){
 			this.tipoAtividadeController = tipoAtividadeController;
+			Arrays.asList(TipoAtividadeService.DEFAULT_TIPOATIVIDADE).forEach(dto -> this.tipoAtividadeController.insertTipoAtividade(dto));
 		}
 
 		@GetMapping("/list")

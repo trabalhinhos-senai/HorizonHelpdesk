@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class ChamadoDTO {
 	
-	 public static final ChamadoDTO NULL_VALUE = new ChamadoDTO(-1l, "", "", "", "", null, null,"", -1l, "", -1l, "", -1l, "");
+	 public static final ChamadoDTO NULL_VALUE = new ChamadoDTO(-1l, "", "", "", "", null, null, "", -1l, -1l, -1l);
 	 
  	 private final Long id;
 	 private final String solicitante;
@@ -16,14 +16,11 @@ public class ChamadoDTO {
 	 private final String prioridadeChamado;
 	 
 	 private final Long clienteId;
-	 private final String clienteNome;
 	 private final Long responsavelId;
-	 private final String responsavelNome;
 	 private final Long tipoAtividadeId;
-	 private final String tipoAtividade;
 	 
 	 public ChamadoDTO(Long id, String solicitante, String titulo, String descricao, String status, Date dataAbertura, Date dataAlvo, 
-			 String prioridadeChamado, Long clienteId, String clienteNome, Long responsavelId, String responsavelNome, Long tipoAtividadeId, String tipoAtividade) {
+			 String prioridadeChamado, Long clienteId, Long responsavelId, Long tipoAtividadeId) {
 		this.id = id;
 		this.status = status;
 		this.solicitante = solicitante;
@@ -33,11 +30,8 @@ public class ChamadoDTO {
 		this.dataAlvo = dataAlvo;
 		this.prioridadeChamado = prioridadeChamado;
 		this.clienteId = clienteId;
-		this.clienteNome = clienteNome;
 		this.responsavelId = responsavelId;
-		this.responsavelNome = responsavelNome;
 		this.tipoAtividadeId = tipoAtividadeId;
-		this.tipoAtividade = tipoAtividade;
 		
 	}
 	 
@@ -78,30 +72,12 @@ public class ChamadoDTO {
 		return clienteId;
 	}
 
-
-	public String getClienteNome() {
-		return clienteNome;
-	}
-
-
 	public Long getResponsavelId() {
 		return responsavelId;
 	}
 
-
-	public String getResponsavelNome() {
-		return responsavelNome;
-	}
-
-
 	public Long getTipoAtividadeId() {
 		return tipoAtividadeId;
-	}
-
-
-	public String getTipoAtividade() {
-		return tipoAtividade;
-	}
-		 
+	}		 
 	
 }

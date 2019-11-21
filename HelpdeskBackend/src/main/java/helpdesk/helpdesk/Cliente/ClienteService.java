@@ -1,5 +1,6 @@
 package helpdesk.helpdesk.Cliente;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -20,10 +21,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/cliente")
 public class ClienteService {
 
+	private static final ClienteDTO[] DEFAULT_CLIENTE = new ClienteDTO [] {
+			new ClienteDTO(1l, "nomeCliente", "cpfOuCnpj")
+		};
+		
 	private final ClienteController clienteController;
 
 	ClienteService(final ClienteController clienteController){
 		this.clienteController = clienteController;
+		Arrays.asList(ClienteService.DEFAULT_CLIENTE).forEach(dto -> this.clienteController.insertCliente(dto));
+		
 	}
 
 	@GetMapping("/list")

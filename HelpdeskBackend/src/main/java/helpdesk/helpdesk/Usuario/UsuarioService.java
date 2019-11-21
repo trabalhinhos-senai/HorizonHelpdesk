@@ -1,5 +1,6 @@
 package helpdesk.helpdesk.Usuario;
 
+import java.util.Arrays;
 import java.util.List;
 import javax.validation.Valid;
 
@@ -17,11 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/usuario")
 public class UsuarioService {
-	private final UsuarioController usuarioController;
 	
-	UsuarioService(final UsuarioController usuarioController){
-		this.usuarioController = usuarioController;
-	}
+	private static final UsuarioDTO[] DEFAULT_USUARIO = new UsuarioDTO [] {
+			new UsuarioDTO(1l, "admin", "admin", "admin", "GrupoAdmin", 1l)
+		};
+		
+		private final UsuarioController usuarioController;
+		
+		UsuarioService(final UsuarioController usuarioController){
+			this.usuarioController = usuarioController;
+			Arrays.asList(UsuarioService.DEFAULT_USUARIO).forEach(dto -> this.usuarioController.insertUsuario(dto));
+		}
 
 	@GetMapping("/list")
 	public List<UsuarioDTO> List(){

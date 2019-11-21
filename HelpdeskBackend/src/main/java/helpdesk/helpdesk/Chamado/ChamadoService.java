@@ -1,5 +1,7 @@
 package helpdesk.helpdesk.Chamado;
 
+import java.sql.Date;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -19,12 +21,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/chamado")
 public class ChamadoService {
 
+	private static final Date data = new Date(120, 0, 0);
+	private static final ChamadoDTO[] DEFAULT_CHAMADO = new ChamadoDTO [] {
+			new ChamadoDTO(1l, "solicitante", "titulo", "descricao", "status", data, data, "prioridadeChamado", 1l, 1l, 1l)
+		}; 
+
 	private final ChamadoController chamadoController;
 	
 	ChamadoService(final ChamadoController chamadoController){
 		this.chamadoController = chamadoController;
+		Arrays.asList(ChamadoService.DEFAULT_CHAMADO).forEach(dto -> this.chamadoController.insertChamado(dto));
+		
 	}
-
+	
+	
 	@GetMapping("/list")
 	public List<ChamadoDTO> List(){
 		return this.chamadoController.getAllChamados();
