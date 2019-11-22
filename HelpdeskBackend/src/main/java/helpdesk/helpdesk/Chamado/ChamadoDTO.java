@@ -2,9 +2,14 @@ package helpdesk.helpdesk.Chamado;
 
 import java.sql.Date;
 
+import helpdesk.helpdesk.Cliente.ClienteDTO;
+import helpdesk.helpdesk.Cliente.ClienteEntity;
+import helpdesk.helpdesk.TipoAtividade.TipoAtividadeDTO;
+import helpdesk.helpdesk.Usuario.UsuarioDTO;
+
 public class ChamadoDTO {
 	
-	 public static final ChamadoDTO NULL_VALUE = new ChamadoDTO(-1l, "", "", "", "", null, null, "", -1l, -1l, -1l);
+	 public static final ChamadoDTO NULL_VALUE = new ChamadoDTO(-1l, "", "", "", "", null, null, "", ClienteDTO.NULL_VALUE, TipoAtividadeDTO.NULL_VALUE, UsuarioDTO.NULL_VALUE);
 	 
  	 private final Long id;
 	 private final String solicitante;
@@ -15,12 +20,13 @@ public class ChamadoDTO {
 	 private final Date dataAlvo;
 	 private final String prioridadeChamado;
 	 
-	 private final Long clienteId;
-	 private final Long responsavelId;
-	 private final Long tipoAtividadeId;
+	 private final ClienteDTO cliente;
+	 private final UsuarioDTO responsavel;
+	 private final TipoAtividadeDTO tipoAtividade;
 	 
 	 public ChamadoDTO(Long id, String solicitante, String titulo, String descricao, String status, Date dataAbertura, Date dataAlvo, 
-			 String prioridadeChamado, Long clienteId, Long responsavelId, Long tipoAtividadeId) {
+			 String prioridadeChamado,  ClienteDTO cliente, TipoAtividadeDTO tipoAtividade, UsuarioDTO responsavel) {
+
 		this.id = id;
 		this.status = status;
 		this.solicitante = solicitante;
@@ -29,9 +35,9 @@ public class ChamadoDTO {
 		this.dataAbertura = dataAbertura;
 		this.dataAlvo = dataAlvo;
 		this.prioridadeChamado = prioridadeChamado;
-		this.clienteId = clienteId;
-		this.responsavelId = responsavelId;
-		this.tipoAtividadeId = tipoAtividadeId;
+		this.cliente = cliente;
+		this.responsavel = responsavel;
+		this.tipoAtividade = tipoAtividade;
 		
 	}
 	 
@@ -64,20 +70,20 @@ public class ChamadoDTO {
 		return status;
 	}
 
-	public static ChamadoDTO getNullValue() {
-		return NULL_VALUE;
+
+	public ClienteDTO getCliente() {
+		return cliente;
 	}
 
-	public Long getClienteId() {
-		return clienteId;
+
+	public UsuarioDTO getResponsavel() {
+		return responsavel;
 	}
 
-	public Long getResponsavelId() {
-		return responsavelId;
-	}
 
-	public Long getTipoAtividadeId() {
-		return tipoAtividadeId;
-	}		 
+	public TipoAtividadeDTO getTipoAtividade() {
+		return tipoAtividade;
+	}
+	
 	
 }

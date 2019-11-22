@@ -20,8 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/tipoatividade")
 public class TipoAtividadeService {
 
-	private static final TipoAtividadeDTO[] DEFAULT_TIPOATIVIDADE = new TipoAtividadeDTO [] {
-			new TipoAtividadeDTO(1l, "teste")
+	public static final TipoAtividadeDTO[] DEFAULT_TIPOATIVIDADE = new TipoAtividadeDTO [] {
+			new TipoAtividadeDTO(1l, "Interno"),
+			new TipoAtividadeDTO(2l, "Melhoria"),
+			new TipoAtividadeDTO(3l, "Correção"),
+			new TipoAtividadeDTO(4l, "Problema"),
 		};
 
 		private final TipoAtividadeController tipoAtividadeController;

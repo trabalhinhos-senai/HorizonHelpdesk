@@ -1,5 +1,6 @@
 package helpdesk.helpdesk.GrupoAcesso;
 
+import java.util.Arrays;
 import java.util.List;
 import javax.validation.Valid;
 
@@ -14,14 +15,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import helpdesk.helpdesk.Usuario.UsuarioDTO;
+import helpdesk.helpdesk.Usuario.UsuarioService;
+
 
 @RestController
 @RequestMapping("/grupoacesso")
 public class GrupoAcessoService {
 	private final GrupoAcessoController grupoAcessoController;
 	
+	public static final GrupoAcessoDTO[] DEFAULT_GRUPO = new GrupoAcessoDTO [] {
+			new GrupoAcessoDTO(1l, "Admin"),
+			new GrupoAcessoDTO(2l, "User")
+		};
+	
 	GrupoAcessoService(final GrupoAcessoController grupoAcessoController){
 		this.grupoAcessoController = grupoAcessoController;
+		Arrays.asList(GrupoAcessoService.DEFAULT_GRUPO).forEach(dto -> this.grupoAcessoController.insertGrupoAcesso(dto));
 	}
 
 	@GetMapping("/list")

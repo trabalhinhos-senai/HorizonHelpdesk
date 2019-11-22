@@ -14,7 +14,7 @@ public class ClienteController {
 	    this.ClienteRepository = ClienteRepository;
 	}
 	
-	private static ClienteEntity toEntity(final ClienteDTO clienteDTO) {
+	public static ClienteEntity toEntity(final ClienteDTO clienteDTO) {
 		final Long id = clienteDTO.getId();
 		final String nomeCliente = clienteDTO.getNomeCliente();
 		final String cpfOuCnpj = clienteDTO.getCpfOuCnpj();

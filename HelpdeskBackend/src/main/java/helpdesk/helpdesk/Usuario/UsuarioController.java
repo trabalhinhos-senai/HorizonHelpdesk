@@ -6,6 +6,11 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 
+import helpdesk.helpdesk.Config.ConfigDTO;
+import helpdesk.helpdesk.Config.ConfigEntity;
+import helpdesk.helpdesk.GrupoAcesso.GrupoAcessoDTO;
+import helpdesk.helpdesk.GrupoAcesso.GrupoAcessoEntity;
+
 @Controller
 public class UsuarioController {
 	
@@ -21,7 +26,17 @@ public class UsuarioController {
 		final String loginUsuario = usuarioDTO.getLoginUsuario();
 		final String senhaUsuario = usuarioDTO.getSenhaUsuario();
 
-		return new UsuarioEntity(id, nomeUsuario, loginUsuario, senhaUsuario);
+		final Long grupoId = usuarioDTO.getGrupoAcesso().getId();
+		final String nomeGrupo = usuarioDTO.getGrupoAcesso().getNomeGrupo();
+		
+		final Long configId = usuarioDTO.getConfig().getId();
+		final String configEmpresa = usuarioDTO.getConfig().getNomeEmpresa();
+		final String configEndereco = usuarioDTO.getConfig().getEnderecoCompletoEmpresa();
+		final String configEmail = usuarioDTO.getConfig().getEmailEmpresa();
+		final String configTelefone = usuarioDTO.getConfig().getTelefoneEmpresa();
+		
+		return new UsuarioEntity(id, nomeUsuario, loginUsuario, senhaUsuario, new GrupoAcessoEntity(grupoId, nomeGrupo), 
+				new ConfigEntity(configId, configEmpresa, configTelefone, configEmail, configEndereco));
 	} 
 	
 	private static UsuarioDTO toDTO(final UsuarioEntity usuarioEntity) {
@@ -30,10 +45,16 @@ public class UsuarioController {
 		final String loginUsuario = usuarioEntity.getLoginUsuario();
 		final String senhaUsuario = usuarioEntity.getSenhaUsuario();
 		
-		final String grupoAcessoNome = usuarioEntity.getGrupoAcesso().getNomeGrupo();
-		final Long configEntityId = usuarioEntity.getConfigEntity().getId();
+		final Long grupoId = usuarioEntity.getGrupoAcesso().getId();
+		final String nomeGrupo = usuarioEntity.getGrupoAcesso().getNomeGrupo();
 		
-		return new UsuarioDTO(id, nomeUsuario, loginUsuario, senhaUsuario, grupoAcessoNome, configEntityId);
+		final Long configId = usuarioEntity.getConfig().getId();
+		final String configEmpresa = usuarioEntity.getConfig().getNomeEmpresa();
+		final String configEndereco = usuarioEntity.getConfig().getEnderecoCompletoEmpresa();
+		final String configEmail = usuarioEntity.getConfig().getEmailEmpresa();
+		final String configTelefone = usuarioEntity.getConfig().getTelefoneEmpresa();
+		
+		return new UsuarioDTO(id, nomeUsuario, loginUsuario, senhaUsuario, new GrupoAcessoDTO(grupoId, nomeGrupo), new ConfigDTO(configId, configEmpresa, configTelefone, configEmail, configEndereco));
 	}
 	
 	private static void updateEntityFromDTO(final UsuarioDTO usuarioDTO, final UsuarioEntity usuarioEntity) {

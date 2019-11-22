@@ -1,5 +1,6 @@
 package helpdesk.helpdesk.Config;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -15,14 +16,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import helpdesk.helpdesk.Usuario.UsuarioDTO;
+import helpdesk.helpdesk.Usuario.UsuarioService;
+
 @RestController
 @RequestMapping("/config")
 public class ConfigService {
 	
 private final ConfigController configController;
 	
+	public static final ConfigDTO[] DEFAULT_CONFIG = new ConfigDTO [] {
+			new ConfigDTO(1l, "Horizon Sistemas", "+55 47 9999-8888", "helpdesk@gmail.com", "Rua Frederico Guten")
+		};
+
 	ConfigService(final ConfigController configController){
 		this.configController = configController;
+		Arrays.asList(ConfigService.DEFAULT_CONFIG).forEach(dto -> this.configController.insertConfig(dto));
 	}
 
 	@GetMapping("/list")

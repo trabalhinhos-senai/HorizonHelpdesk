@@ -16,21 +16,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import helpdesk.helpdesk.Chamado.ChamadoService;
+import helpdesk.helpdesk.TipoAtividade.TipoAtividadeDTO;
 
 @RestController
 @RequestMapping("/api/cliente")
 public class ClienteService {
-
-	private static final ClienteDTO[] DEFAULT_CLIENTE = new ClienteDTO [] {
-			new ClienteDTO(1l, "nomeCliente", "cpfOuCnpj")
+	
+	public static final ClienteDTO[] DEFAULT_CLIENTE = new ClienteDTO [] {
+			new ClienteDTO(1l, "Ponchielli Ind.", "110.220.330-40"),
+			new ClienteDTO(2l, "Ximira e Peixola Ltda ", "20.330.440/0005-60")
 		};
-		
+	
 	private final ClienteController clienteController;
 
 	ClienteService(final ClienteController clienteController){
 		this.clienteController = clienteController;
 		Arrays.asList(ClienteService.DEFAULT_CLIENTE).forEach(dto -> this.clienteController.insertCliente(dto));
-		
 	}
 
 	@GetMapping("/list")

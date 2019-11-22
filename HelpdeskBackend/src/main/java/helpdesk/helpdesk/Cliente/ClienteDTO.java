@@ -9,6 +9,7 @@ public class ClienteDTO {
 	private final String cpfOuCnpj;
 	
 	
+	
 	public ClienteDTO(Long id ,String nomeCliente, String cpfOuCnpj) {
 		this.id=id;
 		this.nomeCliente = nomeCliente;

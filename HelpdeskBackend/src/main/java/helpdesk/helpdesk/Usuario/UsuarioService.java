@@ -15,12 +15,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import helpdesk.helpdesk.Config.ConfigService;
+import helpdesk.helpdesk.GrupoAcesso.GrupoAcessoService;
+
 @RestController
 @RequestMapping("/api/usuario")
 public class UsuarioService {
 	
-	private static final UsuarioDTO[] DEFAULT_USUARIO = new UsuarioDTO [] {
-			new UsuarioDTO(1l, "admin", "admin", "admin", "GrupoAdmin", 1l)
+	public static final UsuarioDTO[] DEFAULT_USUARIO = new UsuarioDTO [] {
+			new UsuarioDTO(1l, "system admin", "admin", "admin123", GrupoAcessoService.DEFAULT_GRUPO[0], ConfigService.DEFAULT_CONFIG[0]),
+			new UsuarioDTO(2l, "simple user", "user", "Password123", GrupoAcessoService.DEFAULT_GRUPO[1], ConfigService.DEFAULT_CONFIG[0])
 		};
 		
 		private final UsuarioController usuarioController;

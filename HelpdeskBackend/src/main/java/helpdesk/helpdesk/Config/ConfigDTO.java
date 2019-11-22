@@ -9,17 +9,17 @@ public class ConfigDTO {
 	private final String nomeEmpresa;
 	private final String telefoneEmpresa;
 	private final String emailEmpresa;
-	private final String enderecoCompretoEmpresa;
+	private final String enderecoCompletoEmpresa;
 	
 	
 	
 	public ConfigDTO(Long id, String nomeEmpresa, String telefoneEmpresa, String emailEmpresa,
-			String enderecoCompretoEmpresa) {
+			String enderecoCompletoEmpresa) {
 		this.id = id;
 		this.nomeEmpresa = nomeEmpresa;
 		this.telefoneEmpresa = telefoneEmpresa;
 		this.emailEmpresa = emailEmpresa;
-		this.enderecoCompretoEmpresa = enderecoCompretoEmpresa;
+		this.enderecoCompletoEmpresa = enderecoCompletoEmpresa;
 	}
 	
 	public Long getId() {
@@ -34,8 +34,8 @@ public class ConfigDTO {
 	public String getEmailEmpresa() {
 		return emailEmpresa;
 	}
-	public String getEnderecoCompretoEmpresa() {
-		return enderecoCompretoEmpresa;
+	public String getEnderecoCompletoEmpresa() {
+		return enderecoCompletoEmpresa;
 	}	
 
 	

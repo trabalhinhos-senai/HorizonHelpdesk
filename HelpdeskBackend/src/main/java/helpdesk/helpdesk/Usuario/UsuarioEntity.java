@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import helpdesk.helpdesk.Config.ConfigEntity;
+import helpdesk.helpdesk.GrupoAcesso.GrupoAcessoDTO;
 import helpdesk.helpdesk.GrupoAcesso.GrupoAcessoEntity;
 
 @Entity
@@ -26,19 +27,20 @@ public class UsuarioEntity  {
 	private GrupoAcessoEntity grupoAcesso;
 	
 	@ManyToOne
-	private ConfigEntity configEntity;
+	private ConfigEntity config;
 
 	
 	protected UsuarioEntity() {
 	}
 	
-	public UsuarioEntity(Long id, String nomeUsuario, String loginUsuario, String senhaUsuario) {
+	public UsuarioEntity(Long id, String nomeUsuario, String loginUsuario, String senhaUsuario, GrupoAcessoEntity grupoAcesso, ConfigEntity config) {
 		super();
 		this.id = id;
 		this.nomeUsuario = nomeUsuario;
 		this.loginUsuario = loginUsuario;
 		this.senhaUsuario = senhaUsuario;
-		//this.grupoAcesso = grupoAcesso;
+		this.grupoAcesso = grupoAcesso;
+		this.config = config;
 	}
 
 	@Override
@@ -63,12 +65,12 @@ public class UsuarioEntity  {
 		return senhaUsuario;
 	}
 	
-	public GrupoAcessoEntity getGrupoAcesso() {
+	public GrupoAcessoEntity getGrupoAcesso() {	
 		return grupoAcesso;
 	}
 	
-	public ConfigEntity getConfigEntity() {
-		return configEntity;
+	public ConfigEntity getConfig() {
+		return config;
 	}
 
 	//----------------
@@ -93,11 +95,13 @@ public class UsuarioEntity  {
 	}
 
 	public void setGrupoAcesso(GrupoAcessoEntity grupoAcesso) {
-		this.grupoAcesso = grupoAcesso;
+		if(grupoAcesso != null)
+			this.grupoAcesso = grupoAcesso;
 	}
 	
-	public void setConfigEntity(ConfigEntity configEntity) {
-		this.configEntity = configEntity;
+	public void setConfig(ConfigEntity configEntity) {
+		if(configEntity != null)
+			this.config = configEntity;
 	}
 	
 }

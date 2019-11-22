@@ -25,9 +25,9 @@ public class ConfigController {
 		final String nomeEmpresa = configDTO.getNomeEmpresa();
 		final String telefoneEmpresa = configDTO.getTelefoneEmpresa();
 		final String emailEmpresa = configDTO.getEmailEmpresa();
-		final String enderecoCompretoEmpresa = configDTO.getEnderecoCompretoEmpresa();
+		final String enderecoCompletoEmpresa = configDTO.getEnderecoCompletoEmpresa();
 
-		return new ConfigEntity(id, nomeEmpresa, telefoneEmpresa, emailEmpresa,enderecoCompretoEmpresa);
+		return new ConfigEntity(id, nomeEmpresa, telefoneEmpresa, emailEmpresa,enderecoCompletoEmpresa);
 		
 	} 
 	
@@ -36,7 +36,7 @@ public class ConfigController {
 		final String nomeEmpresa = configEntity.getNomeEmpresa();
 		final String telefoneEmpresa = configEntity.getTelefoneEmpresa();
 		final String emailEmpresa = configEntity.getEmailEmpresa();
-		final String enderecoCompretoEmpresa = configEntity.getEnderecoCompretoEmpresa();
+		final String enderecoCompretoEmpresa = configEntity.getEnderecoCompletoEmpresa();
 	
 		return new ConfigDTO(id, nomeEmpresa, telefoneEmpresa, emailEmpresa,enderecoCompretoEmpresa);
 	}
@@ -46,7 +46,7 @@ public class ConfigController {
 		configEntity.setNomeEmpresa(configDTO.getNomeEmpresa());
 		configEntity.setTelefoneEmpresa(configDTO.getTelefoneEmpresa());
 		configEntity.setEmailEmpresa(configDTO.getEmailEmpresa());
-		configEntity.setEnderecoCompretoEmpresa(configDTO.getEnderecoCompretoEmpresa());
+		configEntity.setEnderecoCompletoEmpresa(configDTO.getEnderecoCompletoEmpresa());
 		
 		
 	}

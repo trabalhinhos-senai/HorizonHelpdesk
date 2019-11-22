@@ -17,23 +17,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import helpdesk.helpdesk.Cliente.ClienteService;
+import helpdesk.helpdesk.TipoAtividade.TipoAtividadeService;
+import helpdesk.helpdesk.Usuario.UsuarioService;
+
 @RestController
 @RequestMapping("/api/chamado")
 public class ChamadoService {
+	
 
-	private static final Date data = new Date(120, 0, 0);
 	private static final ChamadoDTO[] DEFAULT_CHAMADO = new ChamadoDTO [] {
-			new ChamadoDTO(1l, "solicitante", "titulo", "descricao", "status", data, data, "prioridadeChamado", 1l, 1l, 1l)
-		}; 
-
+			new ChamadoDTO(1l, "solicitante", "titulo", "descricao", "staus", null, null, "prioridade", 
+					ClienteService.DEFAULT_CLIENTE[0], TipoAtividadeService.DEFAULT_TIPOATIVIDADE[0] , UsuarioService.DEFAULT_USUARIO[0])
+		};
+	
 	private final ChamadoController chamadoController;
 	
 	ChamadoService(final ChamadoController chamadoController){
-		this.chamadoController = chamadoController;
+		this.chamadoController = chamadoController;	
 		Arrays.asList(ChamadoService.DEFAULT_CHAMADO).forEach(dto -> this.chamadoController.insertChamado(dto));
-		
 	}
-	
 	
 	@GetMapping("/list")
 	public List<ChamadoDTO> List(){

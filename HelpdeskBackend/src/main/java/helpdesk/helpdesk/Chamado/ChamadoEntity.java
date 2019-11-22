@@ -44,7 +44,7 @@ public class ChamadoEntity {
 	}
 	
 	public ChamadoEntity(Long id, String solicitante, String titulo, String descricao, String status,
-			Date dataAbertura, Date dataAlvo, String prioridadeChamado) {
+			Date dataAbertura, Date dataAlvo, String prioridadeChamado, ClienteEntity cliente, TipoAtividadeEntity tipoAtividade, UsuarioEntity resposavel) {
 		
 		this.id = id;
 		this.solicitante = solicitante;
@@ -54,6 +54,9 @@ public class ChamadoEntity {
 		this.dataAbertura = dataAbertura;
 		this.dataAlvo = dataAlvo;
 		this.prioridadeChamado = prioridadeChamado;
+		this.cliente = cliente;
+		this.tipoAtividade = tipoAtividade;
+		this.resposavel = resposavel;
 		
 	}
 
@@ -64,12 +67,6 @@ public class ChamadoEntity {
 				+  ", prioridadeChamado=" + prioridadeChamado + "]";
 	}
 	
-	
-
-	
-
-
-
 	//Getters
 	public Long getId() {
 		return id;
@@ -103,15 +100,15 @@ public class ChamadoEntity {
 		return status;
 	}
 	
-	public ClienteEntity getClienteEntity() {
+	public ClienteEntity getCliente() {
 		return cliente;
 	}
 	
-	public TipoAtividadeEntity getTipoAtividadeEntity() {
+	public TipoAtividadeEntity getTipoAtividade() {
 		return tipoAtividade;
 	}
 	
-	public UsuarioEntity getUsuarioEntity() {
+	public UsuarioEntity getResponsavel() {
 		return resposavel;
 	}
 	
@@ -156,16 +153,19 @@ public class ChamadoEntity {
 			this.status = status;
 	}
 	
-	public void setClienteEntity(ClienteEntity clienteEntity) {
-		this.cliente = clienteEntity;
+	public void setCliente(ClienteEntity clienteEntity) {
+		if(clienteEntity != null)
+			this.cliente = clienteEntity;
 	}
 
-	public void setTipoAtividadeEntity(TipoAtividadeEntity tipoAtividadeEntity) {
-		this.tipoAtividade = tipoAtividadeEntity;
+	public void setTipoAtividade(TipoAtividadeEntity tipoAtividadeEntity) {
+		if(tipoAtividadeEntity != null)
+			this.tipoAtividade = tipoAtividadeEntity;
 	}
 
-	public void setUsuarioEntity(UsuarioEntity usuarioEntity) {
-		this.resposavel = usuarioEntity;
+	public void setResposavel(UsuarioEntity usuarioEntity) {
+		if(usuarioEntity != null)
+			this.resposavel = usuarioEntity;
 	}
 		
 }

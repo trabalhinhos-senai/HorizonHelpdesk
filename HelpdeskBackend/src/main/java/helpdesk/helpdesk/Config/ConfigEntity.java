@@ -16,26 +16,26 @@ public class ConfigEntity {
 	private String nomeEmpresa;
 	private String telefoneEmpresa;
 	private String emailEmpresa;
-	private String enderecoCompretoEmpresa;	
+	private String enderecoCompletoEmpresa;	
 	
 	public ConfigEntity() {
 		super();
 	}
 
 	public ConfigEntity(Long id, String nomeEmpresa, String telefoneEmpresa, String emailEmpresa,
-			String enderecoCompretoEmpresa) {
+			String enderecoCompletoEmpresa) {
 		super();
 		this.id = id;
 		this.nomeEmpresa = nomeEmpresa;
 		this.telefoneEmpresa = telefoneEmpresa;
 		this.emailEmpresa = emailEmpresa;
-		this.enderecoCompretoEmpresa = enderecoCompretoEmpresa;
+		this.enderecoCompletoEmpresa = enderecoCompletoEmpresa;
 	}
 	
 	@Override
 	public String toString() {
 		return "ConfigEntity [id=" + id + ", nomeEmpresa=" + nomeEmpresa + ", telefoneEmpresa=" + telefoneEmpresa
-				+ ", emailEmpresa=" + emailEmpresa + ", enderecoCompretoEmpresa=" + enderecoCompretoEmpresa + "]";
+				+ ", emailEmpresa=" + emailEmpresa + ", enderecoCompletoEmpresa=" + enderecoCompletoEmpresa + "]";
 	}
 	
 	
@@ -71,12 +71,12 @@ public class ConfigEntity {
 		this.emailEmpresa = emailEmpresa;
 	}
 	
-	public String getEnderecoCompretoEmpresa() {
-		return enderecoCompretoEmpresa;
+	public String getEnderecoCompletoEmpresa() {
+		return enderecoCompletoEmpresa;
 	}
 	
-	public void setEnderecoCompretoEmpresa(String enderecoCompretoEmpresa) {
-		this.enderecoCompretoEmpresa = enderecoCompretoEmpresa;
+	public void setEnderecoCompletoEmpresa(String enderecoCompletoEmpresa) {
+		this.enderecoCompletoEmpresa = enderecoCompletoEmpresa;
 	}
 
 	
