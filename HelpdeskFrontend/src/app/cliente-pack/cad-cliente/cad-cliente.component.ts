@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Cliente } from '../clientes';
 import { CadClienteService } from './cad-cliente.service';
+import { EnderecoService } from 'src/app/_Service/endereco.service';
+import { Estados } from 'src/app/_DTO/estados';
+import { Cidades } from 'src/app/_DTO/cidades';
 
 @Component({
   selector: 'app-cad-cliente',
@@ -11,11 +14,15 @@ import { CadClienteService } from './cad-cliente.service';
 export class CadClienteComponent implements OnInit {
 
   private cliente: Cliente = new Cliente();
+  private estados: Estados[];
+  private cidades: Cidades[];
   cadastrado = false;
 
-  constructor(private cadClienteService: CadClienteService) { }
+  constructor(private cadClienteService: CadClienteService,
+              private enderecoService: EnderecoService) { }
 
   ngOnInit() {
+    this.loadEstados();
   }
 
   onSubmit(formulario: NgForm) {
@@ -28,6 +35,28 @@ export class CadClienteComponent implements OnInit {
         this.cadClienteService.cadCliente(this.cliente);
         this.showAlert();
     }*/
+  }
+
+  loadEstados(): void {
+    this.enderecoService.getAllEstados().subscribe(
+      estados => {
+        //console.log(estados)
+        var estadosAZ = estados;
+        estadosAZ.sort((a,b) => a.sigla.localeCompare(b.sigla));
+        //console.log(estadosAZ);
+        this.estados = estadosAZ;
+
+      });
+  }
+
+  loadCidadePorEstado(idUF) {
+
+    this.enderecoService.getCidadePorUF(idUF).subscribe(
+      cidades => {
+        console.log(cidades);
+        this.cidades = cidades;
+      })
+
   }
 
   showAlert() {
