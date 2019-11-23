@@ -22,9 +22,9 @@
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="inputSenha" class="required">Nova senha</label>
-                    <input [pattern]="selecaoPadrao" name="inputSenha" type="password" class="form-control"
+                    <input [pattern]="this.controleSenha.selecaoPadrao" name="inputSenha" type="password" class="form-control"
                         id="inputSenha" required #inputSenha="ngModel" [(ngModel)]="usuario.senhaUsuario">
-                    <!-- <small *ngIf="inputSenha.errors&&inputSenha.errors.pattern">{{errorMgs}}</small> -->
+                        <small class="text-danger" *ngIf="inputSenha.errors&&inputSenha.errors.pattern">{{this.controleSenha.errorMgs}}</small>
                 </div>
             </div>
             <div class="form-row">

@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 import { UsuarioService } from '../usuarios/usuario.service';
 import { GrupoAcesso } from 'src/app/_DTO/gruposDeAcesso';
 import { GrupoAcessoService } from 'src/app/_Service/grupo-de-acesso.service';
+import { ControleSenhaService } from 'src/app/_Service/controle-senha.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-cad-usuario',
@@ -19,39 +21,21 @@ export class CadUsuarioComponent implements OnInit {
   public cadastrado = false;
   public confirmarSenha: String;
 
-  //Minimo 6 caracteres, ao menos uma letra e um numero:
-  public padraoNormal: any = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$";
-
-  //Minimo 8 caracteres, ao menos uma letra, um numero e um caractere especial:
-  public padraoMedio: any = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$";
-
-  //Minimum eight characters, ao menos uma letra maiuscula, uma letra minuscula e um numero:
-  public padraoAlto: any = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
-
-  errorMgs: string;
-  selecaoPadrao: string;
-
   constructor(private usuarioService: UsuarioService,
-              private grupoDeAcessoService: GrupoAcessoService) { }
+              private grupoDeAcessoService: GrupoAcessoService,
+              private _location: Location,
+              private controleSenha: ControleSenhaService) { }
 
   ngOnInit() {
     this.usuario = new Usuario();
     this.loadGrupoDeAcesso();
 
-    this.selecaoPadrao = this.padraoNormal; //pode alterar entre as tres opções acima
-
-    if (this.selecaoPadrao === this.padraoNormal) {
-      this.errorMgs = 'A senha deve ter no minimo 6 caracteres, ao menos um numero e um caracter.'
-    } else if (this.selecaoPadrao === this.padraoMedio) {
-      this.errorMgs = 'O minimo é 8 caracteres, ao menos uma letra, um numero e um caracter especial.'
-    } else if (this.selecaoPadrao === this.padraoAlto) {
-      this.errorMgs = 'O minimo é 8 caracteres, ao menos uma letra maiuscula, uma minuscula e um numero.'
-    }
+    this.controleSenha.senhaPadrao("Normal");
 
   }
 
   onSubmit(formulario: NgForm) {
-    
+
     if (formulario.valid) {
 
       this.usuarioService.createUser(this.usuario).subscribe(
@@ -59,6 +43,7 @@ export class CadUsuarioComponent implements OnInit {
           console.log(this.usuario)
           this.usuario = new Usuario();
           this.showAlert();
+          this.backLastPage();
         }
       );
       console.log(this.usuario);
@@ -85,6 +70,10 @@ export class CadUsuarioComponent implements OnInit {
       //console.log(this.cadastrado);
     }.bind(this), 3000);
 
+  }
+
+  backLastPage() {
+    this._location.back();
   }
 
 }

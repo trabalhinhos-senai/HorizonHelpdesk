@@ -4,9 +4,9 @@ import { UsuarioService } from '../usuarios/usuario.service';
 import { Usuario } from '../usuarios';
 import {Location} from '@angular/common';
 import { NgForm } from '@angular/forms';
-import { SenhaComponet } from '../senha.component';
 import { GrupoAcessoService } from '../../_Service/grupo-de-acesso.service';
 import { GrupoAcesso } from 'src/app/_DTO/gruposDeAcesso';
+import { ControleSenhaService } from 'src/app/_Service/controle-senha.service';
 
 @Component({
   selector: 'app-usuario-detail',
@@ -24,14 +24,15 @@ export class UsuarioDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private _location: Location,
     private grupoDeAcessoService: GrupoAcessoService,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private controleSenha: ControleSenhaService
     ) { }
 
   ngOnInit(): void {
     //this.usuario = new Usuario;
     
     this.id = this.route.snapshot.paramMap.get('id');
-    //this.senha.SenhaPadrao(1); //1 = normal, 2 = medio, 3 = alto
+    this.controleSenha.senhaPadrao("Normal");
     this.getUsuario();
     this.loadGrupoDeAcesso();
   }

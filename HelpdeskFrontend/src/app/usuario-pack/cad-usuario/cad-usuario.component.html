@@ -3,7 +3,7 @@
 <div class="container h-100 center-div my-md-3">
     <div class="d-flex justify-content-center h-100">
         <form #formUsuario="ngForm" (ngSubmit)="onSubmit(formUsuario)" class="col-8">
-            <button type="button" class="btn btn-dark mb-md-4" routerLink="/usuarios">Voltar</button>
+            <button type="button" class="btn btn-dark mb-md-4" (click)="this.backLastPage()">Voltar</button>
 
             <div class="form-row">
                 <div class="form-group col-md-12">
@@ -22,9 +22,9 @@
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="inputSenha" class="required">Senha</label>
-                    <input [pattern]="selecaoPadrao" name="inputSenha" type="password" class="form-control"
+                    <input [pattern]="this.controleSenha.selecaoPadrao" name="inputSenha" type="password" class="form-control"
                         id="inputSenha" required #inputSenha="ngModel" [(ngModel)]="usuario.senhaUsuario">
-                    <small *ngIf="inputSenha.errors&&inputSenha.errors.pattern">{{errorMgs}}</small>
+                    <small class="text-danger" *ngIf="inputSenha.errors&&inputSenha.errors.pattern">{{this.controleSenha.errorMgs}}</small>
                 </div>
             </div>
             <div class="form-row">
@@ -32,7 +32,7 @@
                     <label for="inputConfirmarSenha">Confirmar Senha</label>
                     <input name="inputConfirmarSenha" type="password" class="form-control" id="inputConfirmarSenha"
                         required #inputConfirmarSenha="ngModel" [(ngModel)]="confirmarSenha">
-                    <small *ngIf="inputConfirmarSenha.value != inputSenha.value">Senhas não confirmam</small>
+                    <small class="text-danger" *ngIf="inputConfirmarSenha.value != inputSenha.value">Senhas não confirmam</small>
                 </div>
             </div>
             <div class="form-row">
