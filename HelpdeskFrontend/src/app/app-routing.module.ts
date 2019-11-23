@@ -11,6 +11,7 @@ import { CadClienteComponent } from './cliente-pack/cad-cliente/cad-cliente.comp
 import { ChamadoDetailComponent } from './chamado-pack/chamado-detail/chamado-detail.component';
 import { UsuarioDetailComponent } from './usuario-pack/usuario-detail/usuario-detail.component';
 import { ClienteDetailComponent } from './cliente-pack/cliente-detail/cliente-detail.component';
+import { ConfigComponent } from './config/config.component';
 
 const routes: Routes = [
   { path: 'abrir-chamado', component: AbrirChamadoComponent/*, canActivate: [AuthGuard]*/ },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'cad-usuario', component: CadUsuarioComponent },
   { path: 'clientes', component: ClientesComponent },
   { path: 'cad-cliente', component: CadClienteComponent },
+  { path: 'config', component: ConfigComponent },
   { path: 'chamado-detalhe/:id', component: ChamadoDetailComponent },
   { path: 'usuario-detalhe/:id', component: UsuarioDetailComponent },
   { path: 'cliente-detalhe/:id', component: ClienteDetailComponent },

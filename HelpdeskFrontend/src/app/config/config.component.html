@@ -1,0 +1,43 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="container h-100 center-div my-md-3">
+    <div class="d-flex justify-content-center h-100">
+        <form #formConfig="ngForm" (ngSubmit)="onSubmit(formConfig)" class="col-8">
+            <button type="button" class="btn btn-dark mb-md-4" (click)="backLastPage()">Voltar</button>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="inputNomeEmpresa" class="required">Empresa</label>
+                    <input name="inputNomeEmpresa" type="Text" class="form-control" id="inputNomeEmpresa" required
+                        #inputNomeEmpresa="ngModel" [(ngModel)]="config.nomeEmpresa">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="inputEnderecoEmpresa" class="required">Endereço Completo</label>
+                    <input name="inputEnderecoEmpresa" type="Text" class="form-control" id="inputEnderecoEmpresa" required
+                        #inputEnderecoEmpresa="ngModel" [(ngModel)]="config.enderecoCompletoEmpresa">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmailEmpresa" class="required">E-mail</label>
+                    <input name="inputEmailEmpresa" type="Text" class="form-control" id="inputEmailEmpresa" required
+                        #inputEmailEmpresa="ngModel" [(ngModel)]="config.emailEmpresa">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputTelefoneEmpresa" class="required">Telefone</label>
+                    <input name="inputTelefoneEmpresa" type="tel" class="form-control" id="inputTelefoneEmpresa" required
+                        #inputTelefoneEmpresa="ngModel" [(ngModel)]="config.telefoneEmpresa">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success mt-md-3" [disabled]="!formConfig.valid">
+                Salvar Configurações</button>
+        </form>
+    </div>
+</div>
+
+<!-- Caixa de mensagem CADASTRADO -->
+<div *ngIf="cadastrado" id="alertSucesso" class="alert alert-success box-msg" align="center" role="alert">
+    Configuração salva com sucesso!
+</div>

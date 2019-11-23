@@ -42,7 +42,7 @@ export class UsuarioDetailComponent implements OnInit {
       console.log(this.usuario)
       this.usuarioService.updateUser(this.id, this.usuario).subscribe(
         usuario => {
-          console.log(this.usuario.grupoAcesso)
+          //console.log(this.usuario.grupoAcesso)
           //this.usuario.grupoAcesso = this.grupoAcesso;
           this.usuario = usuario;
           this.backLastPage();
@@ -61,7 +61,7 @@ export class UsuarioDetailComponent implements OnInit {
   loadGrupoDeAcesso(): void {
     this.grupoDeAcessoService.getAllGrupoAcesso().subscribe(
       grupos => {
-        console.log(grupos)
+        //console.log(grupos)
         this.gruposAcesso = grupos;
       });
   }

@@ -9,25 +9,6 @@ import { retry, catchError, share } from 'rxjs/operators';
 })
 export class UsuarioService {
 
-  /*Usuarios = Usuarios;
-
-  constructor() { }
-
-  getUsuarios() {
-    return this.Usuarios;
-  }
-
-  getUsuarioById(id: string) {
-    
-    for (let i = 0; i < this.Usuarios.length; i++) {
-      const usuario = this.Usuarios[i];
-
-      if (usuario.id === id) {
-        return usuario;
-      }   
-    }    
-  }*/
-
   // Define API
   apiURL = '/api';
 

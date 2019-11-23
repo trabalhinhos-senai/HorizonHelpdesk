@@ -20,6 +20,7 @@ import { FooterComponent } from './page-proprieties/footer/footer.component';
 import { ChamadoDetailComponent } from './chamado-pack/chamado-detail/chamado-detail.component';
 import { UsuarioDetailComponent } from './usuario-pack/usuario-detail/usuario-detail.component';
 import { ClienteDetailComponent } from './cliente-pack/cliente-detail/cliente-detail.component';
+import { ConfigComponent } from './config/config.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ClienteDetailComponent } from './cliente-pack/cliente-detail/cliente-de
     ChamadoDetailComponent,
     UsuarioDetailComponent,
     ClienteDetailComponent,
+    ConfigComponent,
     
   ],
   imports: [

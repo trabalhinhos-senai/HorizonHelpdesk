@@ -20,7 +20,7 @@ import helpdesk.helpdesk.Usuario.UsuarioDTO;
 import helpdesk.helpdesk.Usuario.UsuarioService;
 
 @RestController
-@RequestMapping("/config")
+@RequestMapping("api/config")
 public class ConfigService {
 	
 private final ConfigController configController;
