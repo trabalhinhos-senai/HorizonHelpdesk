@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import helpdesk.helpdesk.Config.ConfigEntity;
-import helpdesk.helpdesk.GrupoAcesso.GrupoAcessoDTO;
 import helpdesk.helpdesk.GrupoAcesso.GrupoAcessoEntity;
 
 @Entity
@@ -26,21 +25,21 @@ public class UsuarioEntity  {
 	@ManyToOne
 	private GrupoAcessoEntity grupoAcesso;
 	
-	@ManyToOne
-	private ConfigEntity config;
+	/*@ManyToOne
+	private ConfigEntity config;*/
 
 	
 	protected UsuarioEntity() {
 	}
 	
-	public UsuarioEntity(Long id, String nomeUsuario, String loginUsuario, String senhaUsuario, GrupoAcessoEntity grupoAcesso, ConfigEntity config) {
+	public UsuarioEntity(Long id, String nomeUsuario, String loginUsuario, String senhaUsuario, GrupoAcessoEntity grupoAcesso/*, ConfigEntity config*/) {
 		super();
 		this.id = id;
 		this.nomeUsuario = nomeUsuario;
 		this.loginUsuario = loginUsuario;
 		this.senhaUsuario = senhaUsuario;
 		this.grupoAcesso = grupoAcesso;
-		this.config = config;
+		/*this.config = config;*/
 	}
 
 	@Override
@@ -69,10 +68,10 @@ public class UsuarioEntity  {
 		return grupoAcesso;
 	}
 	
-	public ConfigEntity getConfig() {
+	/*public ConfigEntity getConfig() {
 		return config;
-	}
-
+	}*/
+	
 	//----------------
 	public void setId(Long id) {
 		if(id != null)
@@ -99,9 +98,9 @@ public class UsuarioEntity  {
 			this.grupoAcesso = grupoAcesso;
 	}
 	
-	public void setConfig(ConfigEntity configEntity) {
+	/*public void setConfig(ConfigEntity configEntity) {
 		if(configEntity != null)
 			this.config = configEntity;
-	}
+	}*/
 	
 }

@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import helpdesk.helpdesk.Chamado.ChamadoService;
-import helpdesk.helpdesk.TipoAtividade.TipoAtividadeDTO;
+import helpdesk.helpdesk.OnInitDB;
 
 @RestController
 @RequestMapping("/api/cliente")

@@ -31,9 +31,8 @@
                 <div class="form-group col-md-12">
                     <label for="selectGrupoAcesso" class="required">Grupo de acesso</label>
                     <select name="selectGrupoAcesso" class="form-control" id="selectGrupoAcesso" required
-                        #selectGrupoAcesso="ngModel" [(ngModel)]="usuario.grupoAcessoNome">
-                        <option selected>User</option>
-                        <option>Admin</option>
+                        #selectGrupoAcesso="ngModel" [(ngModel)]="usuario.grupoAcesso">
+                        <option *ngFor="let grupoAcesso of gruposAcesso" [ngValue]="grupoAcesso">{{grupoAcesso.nomeGrupo}}</option>
                     </select>
                 </div>
             </div>

@@ -36,7 +36,6 @@ export class AbrirChamadoComponent implements OnInit {
   }
 
   loadClientes(): void {
-    //this.products = this.productService.getProducts();
     this.clienteService.getAllClientes().subscribe(
       clientes => {
         this.clientes = clientes;

@@ -35,7 +35,8 @@ import { ClienteDetailComponent } from './cliente-pack/cliente-detail/cliente-de
     FooterComponent,
     ChamadoDetailComponent,
     UsuarioDetailComponent,
-    ClienteDetailComponent
+    ClienteDetailComponent,
+    
   ],
   imports: [
     BrowserModule,

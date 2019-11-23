@@ -16,14 +16,14 @@
                 <div class="form-group col-md-12">
                     <label for="inputLogin" class="required">Login</label>
                     <input name="inputLogin" type="Text" class="form-control" id="inputLogin" required
-                        #inputLogin="ngModel" [(ngModel)]="usuario.login">
+                        #inputLogin="ngModel" [(ngModel)]="usuario.loginUsuario">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="inputSenha" class="required">Senha</label>
                     <input [pattern]="selecaoPadrao" name="inputSenha" type="password" class="form-control"
-                        id="inputSenha" required #inputSenha="ngModel" [(ngModel)]="usuario.senha">
+                        id="inputSenha" required #inputSenha="ngModel" [(ngModel)]="usuario.senhaUsuario">
                     <small *ngIf="inputSenha.errors&&inputSenha.errors.pattern">{{errorMgs}}</small>
                 </div>
             </div>
@@ -39,9 +39,8 @@
                 <div class="form-group col-md-12">
                     <label for="selectGrupoAcesso" class="required">Grupo de acesso</label>
                     <select name="selectGrupoAcesso" class="form-control" id="selectGrupoAcesso" required
-                        #selectGrupoAcesso="ngModel" [(ngModel)]="usuario.grupo">
-                        <option selected value="1">User</option>
-                        <option value="2">Admin</option>
+                        #selectGrupoAcesso="ngModel" [(ngModel)]="usuario.grupoAcesso">
+                        <option *ngFor="let grupoAcesso of gruposAcesso" [ngValue]="grupoAcesso">{{grupoAcesso.nomeGrupo}}</option>
                     </select>
                 </div>
             </div>

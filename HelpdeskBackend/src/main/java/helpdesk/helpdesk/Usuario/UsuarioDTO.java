@@ -5,7 +5,7 @@ import helpdesk.helpdesk.GrupoAcesso.GrupoAcessoDTO;
 
 public class UsuarioDTO {
 
-	public static final UsuarioDTO NULL_VALUE = new UsuarioDTO( -1l ,"", "", "", GrupoAcessoDTO.NULL_VALUE, ConfigDTO.NULL_VALUE);
+	public static final UsuarioDTO NULL_VALUE = new UsuarioDTO( -1l ,"", "", "", GrupoAcessoDTO.NULL_VALUE/*, ConfigDTO.NULL_VALUE*/);
 	
 	 private final Long id;
 	 private final String nomeUsuario;
@@ -13,17 +13,16 @@ public class UsuarioDTO {
 	 private final String senhaUsuario;
 	 
 	 private final GrupoAcessoDTO grupoAcesso;
-	 private final ConfigDTO config;
+	 //private final ConfigDTO config;
 	 
-	 public UsuarioDTO(Long id, String nomeUsuario, String loginUsuario, String senhaUsuario, GrupoAcessoDTO grupoAcesso, ConfigDTO config) {
-		 				this.config = config;
+	 public UsuarioDTO(Long id, String nomeUsuario, String loginUsuario, String senhaUsuario, GrupoAcessoDTO grupoAcesso/*, ConfigDTO config*/) {
+		 				//this.config = config;
 						this.id= id;
 						this.nomeUsuario = nomeUsuario;
 						this.loginUsuario = loginUsuario;
 						this.senhaUsuario = senhaUsuario;
 						
 						this.grupoAcesso = grupoAcesso;
-						//this.configEntityId = configEntityId;
 	}
 
 	public Long getId() {
@@ -46,9 +45,9 @@ public class UsuarioDTO {
 		return grupoAcesso;
 	}
 
-	public ConfigDTO getConfig() {
+	/*public ConfigDTO getConfig() {
 		return config;
-	}
+	}*/
 
 
 	

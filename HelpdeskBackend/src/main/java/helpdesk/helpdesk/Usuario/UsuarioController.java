@@ -29,14 +29,14 @@ public class UsuarioController {
 		final Long grupoId = usuarioDTO.getGrupoAcesso().getId();
 		final String nomeGrupo = usuarioDTO.getGrupoAcesso().getNomeGrupo();
 		
-		final Long configId = usuarioDTO.getConfig().getId();
+		/*final Long configId = usuarioDTO.getConfig().getId();
 		final String configEmpresa = usuarioDTO.getConfig().getNomeEmpresa();
 		final String configEndereco = usuarioDTO.getConfig().getEnderecoCompletoEmpresa();
 		final String configEmail = usuarioDTO.getConfig().getEmailEmpresa();
-		final String configTelefone = usuarioDTO.getConfig().getTelefoneEmpresa();
+		final String configTelefone = usuarioDTO.getConfig().getTelefoneEmpresa();*/
 		
-		return new UsuarioEntity(id, nomeUsuario, loginUsuario, senhaUsuario, new GrupoAcessoEntity(grupoId, nomeGrupo), 
-				new ConfigEntity(configId, configEmpresa, configTelefone, configEmail, configEndereco));
+		return new UsuarioEntity(id, nomeUsuario, loginUsuario, senhaUsuario, new GrupoAcessoEntity(grupoId, nomeGrupo)/*, 
+				new ConfigEntity(configId, configEmpresa, configTelefone, configEmail, configEndereco)*/);
 	} 
 	
 	private static UsuarioDTO toDTO(final UsuarioEntity usuarioEntity) {
@@ -48,21 +48,25 @@ public class UsuarioController {
 		final Long grupoId = usuarioEntity.getGrupoAcesso().getId();
 		final String nomeGrupo = usuarioEntity.getGrupoAcesso().getNomeGrupo();
 		
-		final Long configId = usuarioEntity.getConfig().getId();
+		/*final Long configId = usuarioEntity.getConfig().getId();
 		final String configEmpresa = usuarioEntity.getConfig().getNomeEmpresa();
 		final String configEndereco = usuarioEntity.getConfig().getEnderecoCompletoEmpresa();
 		final String configEmail = usuarioEntity.getConfig().getEmailEmpresa();
-		final String configTelefone = usuarioEntity.getConfig().getTelefoneEmpresa();
+		final String configTelefone = usuarioEntity.getConfig().getTelefoneEmpresa();*/
 		
-		return new UsuarioDTO(id, nomeUsuario, loginUsuario, senhaUsuario, new GrupoAcessoDTO(grupoId, nomeGrupo), new ConfigDTO(configId, configEmpresa, configTelefone, configEmail, configEndereco));
+		return new UsuarioDTO(id, nomeUsuario, loginUsuario, senhaUsuario, new GrupoAcessoDTO(grupoId, nomeGrupo)/*, new ConfigDTO(configId, configEmpresa, configTelefone, configEmail, configEndereco)*/);
 	}
 	
 	private static void updateEntityFromDTO(final UsuarioDTO usuarioDTO, final UsuarioEntity usuarioEntity) {
-		usuarioEntity.setId(usuarioDTO.getId());
+		//usuarioEntity.setId(usuarioDTO.getId());
 		usuarioEntity.setNomeUsuario(usuarioDTO.getNomeUsuario());
 		usuarioEntity.setLoginUsuario(usuarioDTO.getLoginUsuario());
 		usuarioEntity.setSenhaUsuario(usuarioDTO.getSenhaUsuario());
 		
+		usuarioEntity.setGrupoAcesso(new GrupoAcessoEntity(usuarioDTO.getGrupoAcesso().getId(), usuarioDTO.getGrupoAcesso().getNomeGrupo()));
+		
+		/*usuarioEntity.setConfig(new ConfigEntity(usuarioDTO.getConfig().getId(), usuarioDTO.getConfig().getNomeEmpresa(), usuarioDTO.getConfig().getTelefoneEmpresa(), 
+									usuarioEntity.getConfig().getEmailEmpresa(), usuarioEntity.getConfig().getEnderecoCompletoEmpresa()));*/
 		
 	}
 	
@@ -106,10 +110,6 @@ public class UsuarioController {
 			return oldUsuario;
 		}
 		return UsuarioDTO.NULL_VALUE;
-	}
-	
-	public boolean isExistsUsuarioByIdentifier(final Long id) {
-		return this.usuarioRepository.existsById(id);
 	}
 	
 }

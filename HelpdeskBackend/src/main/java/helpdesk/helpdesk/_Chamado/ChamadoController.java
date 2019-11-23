@@ -1,4 +1,4 @@
-package helpdesk.helpdesk.Chamado;
+package helpdesk.helpdesk._Chamado;
 
 
 import java.util.ArrayList;
@@ -48,11 +48,11 @@ public class ChamadoController {
 		final String senhaUsuario = chamadoDTO.getResponsavel().getSenhaUsuario();
 			final Long grupoId = chamadoDTO.getResponsavel().getGrupoAcesso().getId();
 			final String nomeGrupo = chamadoDTO.getResponsavel().getGrupoAcesso().getNomeGrupo();
-			final Long configId = chamadoDTO.getResponsavel().getConfig().getId();
+			/*final Long configId = chamadoDTO.getResponsavel().getConfig().getId();
 			final String configEmpresa = chamadoDTO.getResponsavel().getConfig().getNomeEmpresa();
 			final String configEndereco = chamadoDTO.getResponsavel().getConfig().getEnderecoCompletoEmpresa();
 			final String configEmail = chamadoDTO.getResponsavel().getConfig().getEmailEmpresa();
-			final String configTelefone = chamadoDTO.getResponsavel().getConfig().getTelefoneEmpresa();
+			final String configTelefone = chamadoDTO.getResponsavel().getConfig().getTelefoneEmpresa();*/
 		
 		final Long tipoId = chamadoDTO.getTipoAtividade().getId();
 		final String descricaoAtiv = chamadoDTO.getTipoAtividade().getDescricao();
@@ -61,8 +61,8 @@ public class ChamadoController {
 				new ClienteEntity(clienteId, clienteNome, clienteCPFOuCNPJ),
 				new TipoAtividadeEntity(tipoId, descricaoAtiv),
 				new UsuarioEntity(usuarioId, nomeUsuario, loginUsuario, senhaUsuario, 
-						new GrupoAcessoEntity(grupoId, nomeGrupo), 
-						new ConfigEntity(configId, configEmpresa, configTelefone, configEmail, configEndereco)));
+						new GrupoAcessoEntity(grupoId, nomeGrupo)/*, 
+						new ConfigEntity(configId, configEmpresa, configTelefone, configEmail, configEndereco)*/));
 	} 
 	
 	private static ChamadoDTO toDTO(final ChamadoEntity chamadoEntity) {
@@ -85,11 +85,11 @@ public class ChamadoController {
 		final String senhaUsuario = chamadoEntity.getResponsavel().getSenhaUsuario();
 			final Long grupoId = chamadoEntity.getResponsavel().getGrupoAcesso().getId();
 			final String nomeGrupo = chamadoEntity.getResponsavel().getGrupoAcesso().getNomeGrupo();
-			final Long configId = chamadoEntity.getResponsavel().getConfig().getId();
+			/*final Long configId = chamadoEntity.getResponsavel().getConfig().getId();
 			final String configEmpresa = chamadoEntity.getResponsavel().getConfig().getNomeEmpresa();
 			final String configEndereco = chamadoEntity.getResponsavel().getConfig().getEnderecoCompletoEmpresa();
 			final String configEmail = chamadoEntity.getResponsavel().getConfig().getEmailEmpresa();
-			final String configTelefone = chamadoEntity.getResponsavel().getConfig().getTelefoneEmpresa();
+			final String configTelefone = chamadoEntity.getResponsavel().getConfig().getTelefoneEmpresa();*/
 		
 		final Long tipoId = chamadoEntity.getTipoAtividade().getId();
 		final String descricaoAtiv = chamadoEntity.getTipoAtividade().getDescricao();
@@ -98,8 +98,8 @@ public class ChamadoController {
 				new ClienteDTO(clienteId, clienteNome, clienteCPFOuCNPJ),
 				new TipoAtividadeDTO(tipoId, descricaoAtiv),
 				new UsuarioDTO(usuarioId, nomeUsuario, loginUsuario, senhaUsuario, 
-						new GrupoAcessoDTO(grupoId, nomeGrupo), 
-						new ConfigDTO(configId, configEmpresa, configTelefone, configEmail, configEndereco)));
+						new GrupoAcessoDTO(grupoId, nomeGrupo)/*, 
+						new ConfigDTO(configId, configEmpresa, configTelefone, configEmail, configEndereco)*/));
 	}
 	
 	private static void updateEntityFromDTO(final ChamadoDTO chamadoDTO, final ChamadoEntity chamadoEntity) {

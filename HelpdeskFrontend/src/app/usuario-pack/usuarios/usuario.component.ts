@@ -29,12 +29,18 @@ export class UsuarioComponent implements OnInit {
   }
 
   deleteUser(id) {
-    this.usuarioService.deleteUser(id).subscribe(
-      usuario => {
-        this.usuarioAtual = usuario;
-      });
 
+    var confirmar = confirm("Tem certeza que deseja excluir?");
+    if (confirmar) {
+      this.usuarioService.deleteUser(id).subscribe(
+        usuario => {
+          this.usuarioAtual = usuario;
+          this.loadUsuarios();
+        });
+    } else {
       console.log(this.usuarioAtual);
+    }
+
   }
 
 }

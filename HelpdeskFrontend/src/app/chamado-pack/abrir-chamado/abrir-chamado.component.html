@@ -19,7 +19,7 @@
                 <label for="selectCliente" class="required">Cliente</label>
                 <select name="selectCliente" class="form-control" id="selectCliente" #selectCliente="ngModel"
                     [(ngModel)]="chamado.clienteNome" required>
-                    <option *ngFor="let cliente of clientes" (click)="chamado.clienteId = cliente.id">{{cliente.nomeCliente}}</option>
+                    <option *ngFor="let cliente of clientes">{{cliente.nomeCliente}}</option>
                 </select>
             </div>
         </div>

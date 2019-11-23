@@ -5,6 +5,8 @@ import { Usuario } from '../usuarios';
 import {Location} from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { SenhaComponet } from '../senha.component';
+import { GrupoAcessoService } from '../../_Service/grupo-de-acesso.service';
+import { GrupoAcesso } from 'src/app/_DTO/gruposDeAcesso';
 
 @Component({
   selector: 'app-usuario-detail',
@@ -13,14 +15,15 @@ import { SenhaComponet } from '../senha.component';
 })
 export class UsuarioDetailComponent implements OnInit {
 
-  //private senha: SenhaComponet;
-
+  private gruposAcesso: GrupoAcesso[];
   private usuario: Usuario = new Usuario;
+  private grupoAcesso: GrupoAcesso = new GrupoAcesso;
   private id: String;
 
   constructor(
     private route: ActivatedRoute,
     private _location: Location,
+    private grupoDeAcessoService: GrupoAcessoService,
     private usuarioService: UsuarioService
     ) { }
 
@@ -30,6 +33,7 @@ export class UsuarioDetailComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     //this.senha.SenhaPadrao(1); //1 = normal, 2 = medio, 3 = alto
     this.getUsuario();
+    this.loadGrupoDeAcesso();
   }
 
   onSubmit(formUsuario: NgForm) {
@@ -37,7 +41,8 @@ export class UsuarioDetailComponent implements OnInit {
       console.log(this.usuario)
       this.usuarioService.updateUser(this.id, this.usuario).subscribe(
         usuario => {
-          console.log(usuario)
+          console.log(this.usuario.grupoAcesso)
+          //this.usuario.grupoAcesso = this.grupoAcesso;
           this.usuario = usuario;
           this.backLastPage();
         }
@@ -50,9 +55,21 @@ export class UsuarioDetailComponent implements OnInit {
       usuario => {
         this.usuario = usuario;
       })
-    /*this.usuario = this.usuarioService.getUsuarioById(id);
+  }
 
-    console.log(this.usuarioService.getUsuarioById(id))*/
+  loadGrupoDeAcesso(): void {
+    this.grupoDeAcessoService.getAllGrupoAcesso().subscribe(
+      grupos => {
+        console.log(grupos)
+        this.gruposAcesso = grupos;
+      });
+  }
+
+  getGrupoDeAcesso(id) {
+    this.grupoDeAcessoService.getGrupoAcesso(id).subscribe(
+      grupo => {
+        this.grupoAcesso = grupo;
+      })
   }
 
   backLastPage() {

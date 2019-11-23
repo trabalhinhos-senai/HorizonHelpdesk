@@ -1,8 +1,9 @@
-package helpdesk.helpdesk.Chamado;
+package helpdesk.helpdesk._Chamado;
 
 import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.validation.Valid;
 
@@ -24,9 +25,8 @@ import helpdesk.helpdesk.Usuario.UsuarioService;
 @RestController
 @RequestMapping("/api/chamado")
 public class ChamadoService {
-	
-
-	private static final ChamadoDTO[] DEFAULT_CHAMADO = new ChamadoDTO [] {
+		
+	public static final ChamadoDTO[] DEFAULT_CHAMADO = new ChamadoDTO [] {
 			new ChamadoDTO(1l, "solicitante", "titulo", "descricao", "staus", null, null, "prioridade", 
 					ClienteService.DEFAULT_CLIENTE[0], TipoAtividadeService.DEFAULT_TIPOATIVIDADE[0] , UsuarioService.DEFAULT_USUARIO[0])
 		};
@@ -35,7 +35,14 @@ public class ChamadoService {
 	
 	ChamadoService(final ChamadoController chamadoController){
 		this.chamadoController = chamadoController;	
-		Arrays.asList(ChamadoService.DEFAULT_CHAMADO).forEach(dto -> this.chamadoController.insertChamado(dto));
+		
+		try {
+			Arrays.asList(ChamadoService.DEFAULT_CHAMADO).forEach(dto -> this.chamadoController.insertChamado(dto));
+		} catch (Exception e) {
+			
+			
+		}
+		
 	}
 	
 	@GetMapping("/list")

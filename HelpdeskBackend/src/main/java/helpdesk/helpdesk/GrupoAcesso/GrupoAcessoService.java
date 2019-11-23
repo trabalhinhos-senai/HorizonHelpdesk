@@ -20,7 +20,7 @@ import helpdesk.helpdesk.Usuario.UsuarioService;
 
 
 @RestController
-@RequestMapping("/grupoacesso")
+@RequestMapping("api/grupoacesso")
 public class GrupoAcessoService {
 	private final GrupoAcessoController grupoAcessoController;
 	

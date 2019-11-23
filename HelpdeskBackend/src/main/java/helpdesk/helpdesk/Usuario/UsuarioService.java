@@ -23,8 +23,8 @@ import helpdesk.helpdesk.GrupoAcesso.GrupoAcessoService;
 public class UsuarioService {
 	
 	public static final UsuarioDTO[] DEFAULT_USUARIO = new UsuarioDTO [] {
-			new UsuarioDTO(1l, "system admin", "admin", "admin123", GrupoAcessoService.DEFAULT_GRUPO[0], ConfigService.DEFAULT_CONFIG[0]),
-			new UsuarioDTO(2l, "simple user", "user", "Password123", GrupoAcessoService.DEFAULT_GRUPO[1], ConfigService.DEFAULT_CONFIG[0])
+			new UsuarioDTO(1l, "system admin", "admin", "admin123", GrupoAcessoService.DEFAULT_GRUPO[0]/*, ConfigService.DEFAULT_CONFIG[0]*/),
+			new UsuarioDTO(2l, "simple user", "user", "Password123", GrupoAcessoService.DEFAULT_GRUPO[1]/*, ConfigService.DEFAULT_CONFIG[0]*/)
 		};
 		
 		private final UsuarioController usuarioController;

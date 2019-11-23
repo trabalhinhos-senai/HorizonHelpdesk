@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../usuarios';
 import { NgForm } from '@angular/forms';
 import { UsuarioService } from '../usuarios/usuario.service';
+import { GrupoAcesso } from 'src/app/_DTO/gruposDeAcesso';
+import { GrupoAcessoService } from 'src/app/_Service/grupo-de-acesso.service';
 
 @Component({
   selector: 'app-cad-usuario',
@@ -11,6 +13,8 @@ import { UsuarioService } from '../usuarios/usuario.service';
 export class CadUsuarioComponent implements OnInit {
 
   private usuario: Usuario;
+  private gruposAcesso: GrupoAcesso[];
+  private grupoAcesso: GrupoAcesso = new GrupoAcesso;
 
   public cadastrado = false;
   public confirmarSenha: String;
@@ -27,10 +31,12 @@ export class CadUsuarioComponent implements OnInit {
   errorMgs: string;
   selecaoPadrao: string;
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService,
+              private grupoDeAcessoService: GrupoAcessoService) { }
 
   ngOnInit() {
     this.usuario = new Usuario();
+    this.loadGrupoDeAcesso();
 
     this.selecaoPadrao = this.padraoNormal; //pode alterar entre as tres opções acima
 
@@ -50,24 +56,20 @@ export class CadUsuarioComponent implements OnInit {
 
       this.usuarioService.createUser(this.usuario).subscribe(
         id => {
+          console.log(this.usuario)
           this.usuario = new Usuario();
           this.showAlert();
         }
       );
-      /*if (this.usuario.senha === this.confirmarSenha) {
-
-        console.log(this.usuario)
-        this.cadUsuarioService.cadastrar(this.usuario);
-        console.log(this.usuario.nome)
-
-        this.showAlert();
-
-      } else {
-        console.log("não confere");
-      }*/
-
-
+      console.log(this.usuario);
     }
+  }
+
+  loadGrupoDeAcesso(): void {
+    this.grupoDeAcessoService.getAllGrupoAcesso().subscribe(
+      grupos => {
+        this.gruposAcesso = grupos;
+      });
   }
 
   showAlert() {

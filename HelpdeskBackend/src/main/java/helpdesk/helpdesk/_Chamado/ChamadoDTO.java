@@ -1,9 +1,8 @@
-package helpdesk.helpdesk.Chamado;
+package helpdesk.helpdesk._Chamado;
 
 import java.sql.Date;
 
 import helpdesk.helpdesk.Cliente.ClienteDTO;
-import helpdesk.helpdesk.Cliente.ClienteEntity;
 import helpdesk.helpdesk.TipoAtividade.TipoAtividadeDTO;
 import helpdesk.helpdesk.Usuario.UsuarioDTO;
 
