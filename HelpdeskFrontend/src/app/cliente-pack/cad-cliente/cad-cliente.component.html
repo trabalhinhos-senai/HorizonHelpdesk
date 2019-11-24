@@ -21,8 +21,8 @@
                 <div class="form-group col-md-2">
                     <label for="estadoCliente">Estado</label>
                     <select name="estadoCliente" id="estadoCliente" class="form-control" #estadoCliente="ngModel"
-                        [(ngModel)]="cliente.estado" (click)="loadCidadePorEstado(42)">
-                        <option *ngFor="let estado of estados" [ngValue]="estado.sigla">{{estado.sigla}}</option>
+                        [(ngModel)]="cliente.estado" [value]='42' (click)="loadCidadePorEstado(estadoCliente.value)">
+                        <option *ngFor="let estado of estados" [ngValue]="estado.id">{{estado.sigla}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
@@ -34,11 +34,8 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="bairroCliente">Bairro</label>
-                    <select name="bairroCliente" id="bairroCliente" class="form-control" #bairroCliente="ngModel"
+                    <input name="bairroCliente" id="bairroCliente" type="text" class="form-control" #bairroCliente="ngModel"
                         [(ngModel)]="cliente.bairro">
-                        <option selected>Selecione...</option>
-                        <option>...</option>
-                    </select>
                 </div>
             </div>
             <div class="form-row">

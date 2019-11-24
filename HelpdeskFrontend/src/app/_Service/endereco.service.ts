@@ -46,10 +46,10 @@ export class EnderecoService {
 
    getCidadePorUF(id): Observable<Cidades[]> {
     return this.http.get<Cidades[]>(this.apiURL + '/v1/localidades/estados/' + id + '/municipios')
-      .pipe(
+      /*.pipe(
         retry(1),
         catchError(this.handleError)
-      )
+      )*/
   }
  
    // Error handling
