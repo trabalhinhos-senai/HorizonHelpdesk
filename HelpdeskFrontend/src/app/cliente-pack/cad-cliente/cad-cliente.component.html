@@ -9,62 +9,62 @@
                 <div class="form-group col-md-6">
                     <label for="nomeCliente">Nome</label>
                     <input name="nomeCliente" type="text" class="form-control" id="nomeCliente"
-                        placeholder="Nome do Cliente" #nomeCliente="ngModel" [(ngModel)]="cliente.nome">
+                        placeholder="Nome do Cliente" #nomeCliente="ngModel" [(ngModel)]="cliente.nomeCliente" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="cpfCnpjCliente">CNPJ / CPF</label>
                     <input name="cpfCnpjCliente" type="text" class="form-control" id="cpfCnpjCliente"
-                        placeholder="CNPJ / CPF" #cpfCnpjCliente="ngModel" [(ngModel)]="cliente.cpfcnpj">
+                        placeholder="CNPJ / CPF" #cpfCnpjCliente="ngModel" [(ngModel)]="cliente.cpfOuCnpj">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-2">
                     <label for="estadoCliente">Estado</label>
                     <select name="estadoCliente" id="estadoCliente" class="form-control" #estadoCliente="ngModel"
-                        [(ngModel)]="cliente.estado" [value]='42' (click)="loadCidadePorEstado(estadoCliente.value)">
+                        [(ngModel)]="clienteEndereco.estado" [value]='42' (click)="loadCidadePorEstado(estadoCliente.value)">
                         <option *ngFor="let estado of estados" [ngValue]="estado.id">{{estado.sigla}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="cidadeCliente">Cidade</label>
                     <select name="cidadeCliente" id="cidadeCliente" class="form-control" #cidadeCliente="ngModel"
-                        [(ngModel)]="cliente.cidade">
+                        [(ngModel)]="clienteEndereco.cidade">
                         <option *ngFor="let cidade of cidades" [ngValue]="cidade.nome">{{cidade.nome}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="bairroCliente">Bairro</label>
                     <input name="bairroCliente" id="bairroCliente" type="text" class="form-control" #bairroCliente="ngModel"
-                        [(ngModel)]="cliente.bairro">
+                        [(ngModel)]="clienteEndereco.bairro">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-10">
                     <label for="enderecoCliente">Endereço</label>
                     <input name="enderecoCliente" type="text" class="form-control" id="enderecoCliente"
-                        placeholder="Rua Adolfo Cristo ..." #enderecoCliente="ngModel" [(ngModel)]="cliente.endereco">
+                        placeholder="Rua Adolfo Cristo ..." #enderecoCliente="ngModel" [(ngModel)]="clienteEndereco.endereco">
                 </div>
                 <div class="form-group col-md-2">
                     <label for="numeroCliente">Número</label>
                     <input name="numeroCliente" type="number" class="form-control" id="numeroCliente"
-                        placeholder="42..." #numeroCliente="ngModel" [(ngModel)]="cliente.numero">
+                        placeholder="42..." #numeroCliente="ngModel" [(ngModel)]="clienteEndereco.numero">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="emailCliente">Email</label>
                     <input name="emailCliente" type="email" class="form-control" id="emailCliente"
-                        placeholder="seuemail@seuemail.com.br" #emailCliente="ngModel" [(ngModel)]="cliente.email">
+                        placeholder="seuemail@seuemail.com.br" #emailCliente="ngModel" [(ngModel)]="clienteContato.email">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="telefoneCliente">Telefone</label>
                     <input name="telefoneCliente" type="text" class="form-control" id="telefoneCliente"
-                        placeholder="3333-3333" #telefoneCliente="ngModel" [(ngModel)]="cliente.telefone">
+                        placeholder="3333-3333" #telefoneCliente="ngModel" [(ngModel)]="clienteContato.telefone">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="celularCliente">Celular</label>
                     <input name="celularCliente" type="text" class="form-control" id="celularCliente"
-                        placeholder="99999-9999" #celularCliente="ngModel" [(ngModel)]="cliente.celular">
+                        placeholder="99999-9999" #celularCliente="ngModel" [(ngModel)]="clienteContato.celular">
                 </div>
             </div>
             <button type="submit" class="btn btn-success" [disabled]="!formCliente.valid">Cadastrar cliente</button>

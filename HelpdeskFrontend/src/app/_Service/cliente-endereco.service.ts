@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cliente } from '../clientesDTO';
+import { ClienteEndereco } from '../cliente-pack/clientesDTO';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError, share } from 'rxjs/operators';
@@ -7,7 +7,7 @@ import { retry, catchError, share } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class ClientesService {
+export class ClienteEnderecoService {
 
   // Define API
   apiURL = '/api';
@@ -26,8 +26,8 @@ export class ClientesService {
   }
 
   // HttpClient API get() method => Fetch Products list
-  getAllClientes(): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(this.apiURL + '/cliente/list')
+  getAllClientesEndereco(): Observable<ClienteEndereco[]> {
+    return this.http.get<ClienteEndereco[]>(this.apiURL + '/clienteEndereco/list')
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -35,8 +35,8 @@ export class ClientesService {
   }
 
   // HttpClient API get() method => Fetch product
-  getCliente(id): Observable<Cliente> {
-    return this.http.get<Cliente>(this.apiURL + '/cliente/get/' + id)
+  getClienteEndereco(id): Observable<ClienteEndereco> {
+    return this.http.get<ClienteEndereco>(this.apiURL + '/clienteEndereco/get/' + id)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -44,8 +44,8 @@ export class ClientesService {
   }
 
   // HttpClient API post() method => Create product
-  createCliente(cliente): Observable<Number> {
-    return this.http.post<Number>(this.apiURL + '/cliente', JSON.stringify(cliente), this.httpOptions)
+  createClienteEndereco(clienteEndereco): Observable<Number> {
+    return this.http.post<Number>(this.apiURL + '/clienteEndereco', JSON.stringify(clienteEndereco), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -53,9 +53,8 @@ export class ClientesService {
   }
 
   // HttpClient API put() method => Update product
-  updateCliente(id, cliente): Observable<Cliente> {
-    console.log(JSON.stringify(cliente));
-    return this.http.put<Cliente>(this.apiURL + '/cliente/' + id, JSON.stringify(cliente), this.httpOptions)
+  updateClienteEndereco(id, clienteEndereco): Observable<ClienteEndereco> {
+    return this.http.put<ClienteEndereco>(this.apiURL + '/clienteEndereco/' + id, JSON.stringify(clienteEndereco), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -63,8 +62,8 @@ export class ClientesService {
   }
 
   // HttpClient API delete() method => Delete product
-  deleteCliente(id): Observable<Cliente> {
-    return this.http.delete<Cliente>(this.apiURL + '/cliente/' + id, this.httpOptions)
+  deleteClienteEndereco(id): Observable<ClienteEndereco> {
+    return this.http.delete<ClienteEndereco>(this.apiURL + '/clienteEndereco/' + id, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError),
@@ -85,5 +84,4 @@ export class ClientesService {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
-
 }
