@@ -9,7 +9,6 @@ import { Usuario } from '../usuarios';
 })
 export class UsuarioComponent implements OnInit {
 
-  //Usuarios = Usuarios;
   private usuarios: Usuario[];
   private usuarioAtual = new Usuario;
 
@@ -17,11 +16,9 @@ export class UsuarioComponent implements OnInit {
 
   ngOnInit() {
     this.loadUsuarios();
-    //this.Usuarios = this.usuarioService.getUsuarios();
   }
 
   loadUsuarios(): void {
-    //this.products = this.productService.getProducts();
     this.usuarioService.getAllUsers().subscribe(
       usuarios => {
         this.usuarios = usuarios;

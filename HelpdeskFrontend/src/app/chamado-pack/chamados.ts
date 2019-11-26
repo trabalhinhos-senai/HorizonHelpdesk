@@ -1,4 +1,4 @@
-import { Cliente } from 'src/app/cliente-pack/clientes';
+import { Cliente } from 'src/app/cliente-pack/clientesDTO';
 
 export class Chamado {
 

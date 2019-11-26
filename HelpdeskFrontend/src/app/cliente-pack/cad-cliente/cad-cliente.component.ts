@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Cliente } from '../clientes';
+import { Cliente } from '../clientesDTO';
 import { CadClienteService } from './cad-cliente.service';
 import { EnderecoService } from 'src/app/_Service/endereco.service';
 import { Estados } from 'src/app/_DTO/estados';

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from '../clientes';
-import { CadClienteService } from '../cad-cliente/cad-cliente.service';
+import { Cliente, ClienteContato } from '../clientesDTO';
+import { ClientesService } from './clientes.service';
+import { ClienteContatoService } from 'src/app/_Service/cliente-contato.service';
 
 @Component({
   selector: 'app-clientes',
@@ -9,11 +10,23 @@ import { CadClienteService } from '../cad-cliente/cad-cliente.service';
 })
 export class ClientesComponent implements OnInit {
 
-  //Clientes = Clientes;
+  private clientes: ClienteContato[];
+  private clienteAtual = new ClienteContato;
 
-  constructor(private clienteService: CadClienteService) { }
+  constructor(private clienteService: ClientesService,
+              private clienteContatoService: ClienteContatoService) { }
 
   ngOnInit() {
-    //this.Clientes = this.clienteService.getCliente();
+    this.loadUsuarios();
   }
+
+  loadUsuarios(): void {
+    //this.products = this.productService.getProducts();
+    this.clienteContatoService.getAllClientesContato().subscribe(
+      clientes => {
+        console.log(clientes)
+        this.clientes = clientes;
+      });
+  }
+
 }

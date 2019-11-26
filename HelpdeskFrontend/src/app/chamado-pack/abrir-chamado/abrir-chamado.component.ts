@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Chamado } from '../chamados';
 import { NgForm } from '@angular/forms';
 import { ChamadosService } from '../chamados/chamados.service';
-import { Cliente } from 'src/app/cliente-pack/clientes';
+import { Cliente } from 'src/app/cliente-pack/clientesDTO';
 import { ClientesService } from 'src/app/cliente-pack/clientes/clientes.service';
 
 @Component({
