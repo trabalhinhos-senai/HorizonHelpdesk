@@ -1,4 +1,6 @@
 import { Cliente } from 'src/app/cliente-pack/clientesDTO';
+import { Usuario } from '../usuario-pack/usuarios';
+import { TipoAtividade } from '../_DTO/tipoAtividade';
 
 export class Chamado {
 
@@ -10,14 +12,7 @@ export class Chamado {
     dataAbertura: string;
     dataAlvo: string;
     prioridadeChamado: string;
-
-    cliente = new Cliente();
-
-    /*clienteId: Number;
-    clienteNome: string;
-    responsavelId: Number;
-    responsavelNome: string;
-    tipoAtividadeId: Number;
-    tipoAtividade: string;*/
-
+    cliente: Cliente;
+    responsavel: Usuario;
+    tipoAtividade: TipoAtividade;
 }

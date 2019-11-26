@@ -39,27 +39,23 @@ export class CadClienteComponent implements OnInit {
         idCliente => {
           console.log(this.cliente)
           this.cliente = new Cliente();
-          this.clienteContato = new ClienteContato();
-          this.clienteContato.cliente = this.cliente;
-          this.clienteContatoService.createClienteContato(this.clienteContato).subscribe(
-            idContato => {
-              console.log(this.cliente)
-              
-              
-            }
-          );
-
-          this.clienteEnderecoService.createClienteEndereco(this.clienteEndereco).subscribe(
-            idEndereco => {
-              console.log(this.clienteEndereco)
-              this.clienteEndereco = new ClienteEndereco();
-              this.clienteEndereco.cliente = this.cliente;
-            }
-          );
-
           //this.backLastPage();
         }
       );
+
+      /*this.clienteContatoService.createClienteContato(this.clienteContato).subscribe(
+        idContato => {
+          this.clienteContato = new ClienteContato();
+          
+        }
+      );
+
+      this.clienteEnderecoService.createClienteEndereco(this.clienteEndereco).subscribe(
+        idEndereco => {
+          this.clienteEndereco = new ClienteEndereco();
+        }
+      );*/
+
     }
   }
 

@@ -5,6 +5,8 @@ import { Chamado } from '../chamados';
 import { ChamadosService } from '../chamados/chamados.service';
 import { NgForm } from '@angular/forms';
 import {Location} from '@angular/common';
+import { ClientesService } from 'src/app/cliente-pack/clientes/clientes.service';
+import { Cliente } from 'src/app/cliente-pack/clientesDTO';
 
 
 @Component({
@@ -16,12 +18,14 @@ import {Location} from '@angular/common';
 export class ChamadoDetailComponent implements OnInit {
 
   private chamado: Chamado = new Chamado();
+  private cliente: Cliente = new Cliente();
   private id: String;
 
   constructor(
     private route: ActivatedRoute,
     private _location: Location,
-    private chamadoService: ChamadosService
+    private chamadoService: ChamadosService,
+    private clienteService: ClientesService
     ) { }
 
   ngOnInit(): void {
@@ -29,6 +33,7 @@ export class ChamadoDetailComponent implements OnInit {
     
     this.id = this.route.snapshot.paramMap.get('id');
     this.getChamado();
+    //this.getCliente();
   }
 
   onSubmit(formChamado: NgForm) {
@@ -48,6 +53,15 @@ export class ChamadoDetailComponent implements OnInit {
       chamado => {
         console.log(chamado)
         this.chamado = chamado;
+
+        
+          this.clienteService.getCliente(this.chamado.cliente.id).subscribe(
+            cliente => {
+              console.log(cliente)
+              this.cliente = cliente;
+            })
+        
+
       })
   }
 

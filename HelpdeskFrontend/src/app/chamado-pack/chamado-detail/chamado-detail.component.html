@@ -12,9 +12,9 @@
                     #inputSolicitante="ngModel" [(ngModel)]="chamado.solicitante" required disabled>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputCliente" class="required">Cliente</label>
-                <input name="inputCliente" type="Text" class="form-control" id="inputCliente" #inputCliente="ngModel"
-                    [(ngModel)]="chamado.clienteNome" required disabled>
+                <label for="inputNomeCliente" class="required">Cliente</label>
+                <input name="inputNomeCliente" type="Text" class="form-control" id="inputNomeCliente" #inputNomeCliente="ngModel"
+                    [(ngModel)]="chamado.cliente.nomeCliente" required disabled>
             </div>
         </div>
         <div class="form-row">
