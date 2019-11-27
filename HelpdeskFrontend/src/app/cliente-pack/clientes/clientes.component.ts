@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente, ClienteContato } from '../clientesDTO';
+import { Cliente } from '../clientesDTO';
 import { ClientesService } from './clientes.service';
-import { ClienteContatoService } from 'src/app/_Service/cliente-contato.service';
 
 @Component({
   selector: 'app-clientes',
@@ -10,11 +9,9 @@ import { ClienteContatoService } from 'src/app/_Service/cliente-contato.service'
 })
 export class ClientesComponent implements OnInit {
 
-  private clientes: ClienteContato[];
-  private clienteAtual = new ClienteContato;
+  private clientes: Cliente[];
 
-  constructor(private clienteService: ClientesService,
-              private clienteContatoService: ClienteContatoService) { }
+  constructor(private clienteService: ClientesService) { }
 
   ngOnInit() {
     this.loadUsuarios();
@@ -22,7 +19,7 @@ export class ClientesComponent implements OnInit {
 
   loadUsuarios(): void {
     //this.products = this.productService.getProducts();
-    this.clienteContatoService.getAllClientesContato().subscribe(
+    this.clienteService.getAllClientes().subscribe(
       clientes => {
         console.log(clientes)
         this.clientes = clientes;

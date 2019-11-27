@@ -7,6 +7,9 @@ import { NgForm } from '@angular/forms';
 import {Location} from '@angular/common';
 import { ClientesService } from 'src/app/cliente-pack/clientes/clientes.service';
 import { Cliente } from 'src/app/cliente-pack/clientesDTO';
+import { Usuario } from 'src/app/usuario-pack/usuarios';
+import { UsuarioService } from 'src/app/usuario-pack/usuarios/usuario.service';
+import { TipoAtividade } from 'src/app/_DTO/tipoAtividade';
 
 
 @Component({
@@ -19,13 +22,17 @@ export class ChamadoDetailComponent implements OnInit {
 
   private chamado: Chamado = new Chamado();
   private cliente: Cliente = new Cliente();
+  private usuario: Usuario = new Usuario();
+  private usuarios: Usuario[];
   private id: String;
 
   constructor(
     private route: ActivatedRoute,
     private _location: Location,
     private chamadoService: ChamadosService,
-    private clienteService: ClientesService
+    private clienteService: ClientesService,
+    private usuarioService: UsuarioService,
+    //private tipoAtividade: TipoAtividadeS
     ) { }
 
   ngOnInit(): void {
@@ -33,6 +40,7 @@ export class ChamadoDetailComponent implements OnInit {
     
     this.id = this.route.snapshot.paramMap.get('id');
     this.getChamado();
+    this.loadUsuariosList();
     //this.getCliente();
   }
 
@@ -53,15 +61,29 @@ export class ChamadoDetailComponent implements OnInit {
       chamado => {
         console.log(chamado)
         this.chamado = chamado;
+      })
+  }
 
-        
-          this.clienteService.getCliente(this.chamado.cliente.id).subscribe(
-            cliente => {
-              console.log(cliente)
-              this.cliente = cliente;
-            })
-        
+  loadUsuariosList(): void {
+    this.usuarioService.getAllUsers().subscribe(
+      usuarios => {
+        //console.log(grupos)
+        this.usuarios = usuarios;
+      });
+  }
 
+  loadTipoAtividadeList(): void {
+    this.usuarioService.getAllUsers().subscribe(
+      usuarios => {
+        //console.log(grupos)
+        this.usuarios = usuarios;
+      });
+  }
+
+  getUsuario(id) {
+    this.usuarioService.getUser(id).subscribe(
+      usuario => {
+        this.usuario = usuario;
       })
   }
 

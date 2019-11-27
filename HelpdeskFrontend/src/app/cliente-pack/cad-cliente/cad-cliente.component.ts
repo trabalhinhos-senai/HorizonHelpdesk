@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Cliente, ClienteContato, ClienteEndereco } from '../clientesDTO';
+import { Cliente } from '../clientesDTO';
 import { CadClienteService } from './cad-cliente.service';
 import { EnderecoService } from 'src/app/_Service/endereco.service';
 import { Estados } from 'src/app/_DTO/estados';
 import { Cidades } from 'src/app/_DTO/cidades';
 import { ClientesService } from '../clientes/clientes.service';
-import { ClienteContatoService } from 'src/app/_Service/cliente-contato.service';
-import { ClienteEnderecoService } from 'src/app/_Service/cliente-endereco.service';
 
 @Component({
   selector: 'app-cad-cliente',
@@ -17,15 +15,11 @@ import { ClienteEnderecoService } from 'src/app/_Service/cliente-endereco.servic
 export class CadClienteComponent implements OnInit {
 
   private cliente: Cliente = new Cliente();
-  private clienteContato: ClienteContato = new ClienteContato();
-  private clienteEndereco: ClienteEndereco = new ClienteEndereco();
   private estados: Estados[];
   private cidades: Cidades[];
   cadastrado = false;
 
   constructor(private clienteService: ClientesService,
-    private clienteContatoService: ClienteContatoService,
-    private clienteEnderecoService: ClienteEnderecoService,
     private enderecoService: EnderecoService) { }
 
   ngOnInit() {
@@ -42,20 +36,6 @@ export class CadClienteComponent implements OnInit {
           //this.backLastPage();
         }
       );
-
-      /*this.clienteContatoService.createClienteContato(this.clienteContato).subscribe(
-        idContato => {
-          this.clienteContato = new ClienteContato();
-          
-        }
-      );
-
-      this.clienteEnderecoService.createClienteEndereco(this.clienteEndereco).subscribe(
-        idEndereco => {
-          this.clienteEndereco = new ClienteEndereco();
-        }
-      );*/
-
     }
   }
 

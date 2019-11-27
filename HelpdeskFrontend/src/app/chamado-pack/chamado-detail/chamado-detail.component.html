@@ -2,7 +2,7 @@
 
 <div class="container my-md-3">
 
-    <form #formChamado="ngForm">
+    <form #formChamado="ngForm" *ngIf="chamado.cliente && chamado.tipoAtividade && chamado.responsavel">
         <button type="submit" class="btn btn-dark mb-md-4 my-sm-2" (click)="backLastPage()">Voltar</button>
 
         <div class="form-row ">
@@ -27,7 +27,7 @@
                 <label for="selectTipo" class="required">Tipo</label>
                 <div class="input-group">
                     <select name="selectTipo" id="selectTipo" class="form-control" #selectTipo="ngModel"
-                        [(ngModel)]="chamado.tipoAtividade" required>
+                        [(ngModel)]="chamado.tipoAtividade.descricao" required>
                         <option selected>Interno</option>
                         <option>Melhoria</option>
                         <option>Correção</option>
@@ -53,12 +53,8 @@
             <div class="form-group col-md-4">
                 <label for="inputResponsavel">Responsável</label>
                 <select name="inputResponsavel" id="inputResponsavel" class="form-control" #inputResponsavel="ngModel"
-                    [(ngModel)]="chamado.responsavelNome">
-                    <option selected></option>
-                    <option>Gabriel</option>
-                    <option>Jaison</option>
-                    <option>Igor</option>
-                    <option>Leonardo</option>
+                    [(ngModel)]="chamado.responsavel.nomeUsuario">
+                    <option *ngFor="let usuario of usuarios" [ngValue]="usuario">{{usuario.nomeUsuario}}</option>
                 </select>
             </div>
             <div class="form-group col-md-2">
