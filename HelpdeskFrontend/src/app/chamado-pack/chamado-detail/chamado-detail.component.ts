@@ -10,6 +10,7 @@ import { Cliente } from 'src/app/cliente-pack/clientesDTO';
 import { Usuario } from 'src/app/usuario-pack/usuarios';
 import { UsuarioService } from 'src/app/usuario-pack/usuarios/usuario.service';
 import { TipoAtividade } from 'src/app/_DTO/tipoAtividade';
+import { TipoAtividadeService } from 'src/app/_Service/tipo-atividade.service';
 
 
 @Component({
@@ -23,6 +24,8 @@ export class ChamadoDetailComponent implements OnInit {
   private chamado: Chamado = new Chamado();
   private cliente: Cliente = new Cliente();
   private usuario: Usuario = new Usuario();
+  private tipoAtividade: TipoAtividade = new TipoAtividade();
+  private tiposAtividade: TipoAtividade[];
   private usuarios: Usuario[];
   private id: String;
 
@@ -32,7 +35,7 @@ export class ChamadoDetailComponent implements OnInit {
     private chamadoService: ChamadosService,
     private clienteService: ClientesService,
     private usuarioService: UsuarioService,
-    //private tipoAtividade: TipoAtividadeS
+    private tipoAtividadeService: TipoAtividadeService
     ) { }
 
   ngOnInit(): void {
@@ -41,14 +44,16 @@ export class ChamadoDetailComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getChamado();
     this.loadUsuariosList();
+    this.loadTipoAtividadeList();
     //this.getCliente();
   }
 
   onSubmit(formChamado: NgForm) {
+    //alert(this.chamado.titulo);
     if (formChamado.valid) {
-      console.log(this.chamado)
       this.chamadoService.updateChamado(this.id, this.chamado).subscribe(
         chamado => {
+          console.log(chamado)
           this.chamado = chamado;
           this.backLastPage();
         }
@@ -73,10 +78,9 @@ export class ChamadoDetailComponent implements OnInit {
   }
 
   loadTipoAtividadeList(): void {
-    this.usuarioService.getAllUsers().subscribe(
-      usuarios => {
-        //console.log(grupos)
-        this.usuarios = usuarios;
+    this.tipoAtividadeService.getAllTipoAtividade().subscribe(
+      tiposAtividade => {
+        this.tiposAtividade = tiposAtividade;
       });
   }
 

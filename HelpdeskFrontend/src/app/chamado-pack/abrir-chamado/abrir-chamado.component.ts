@@ -4,6 +4,11 @@ import { NgForm } from '@angular/forms';
 import { ChamadosService } from '../chamados/chamados.service';
 import { Cliente } from 'src/app/cliente-pack/clientesDTO';
 import { ClientesService } from 'src/app/cliente-pack/clientes/clientes.service';
+import { TipoAtividade } from 'src/app/_DTO/tipoAtividade';
+import { Usuario } from 'src/app/usuario-pack/usuarios';
+import { UsuarioService } from 'src/app/usuario-pack/usuarios/usuario.service';
+import { TipoAtividadeService } from 'src/app/_Service/tipo-atividade.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-abrir-chamado',
@@ -13,23 +18,34 @@ import { ClientesService } from 'src/app/cliente-pack/clientes/clientes.service'
 export class AbrirChamadoComponent implements OnInit {
 
   private chamado: Chamado = new Chamado();
+  private cliente: Cliente = new Cliente();
   private clientes: Cliente[];
+  private usuario: Usuario = new Usuario();
+  private tipoAtividade: TipoAtividade = new TipoAtividade();
+  private tiposAtividade: TipoAtividade[];
+  private usuarios: Usuario[];
   public aberto = false;
 
-  constructor(private chamadoService: ChamadosService,
-              private clienteService: ClientesService) { }
+  constructor(private _location: Location,
+              private chamadoService: ChamadosService,
+              private clienteService: ClientesService,
+              private usuarioService: UsuarioService,
+              private tipoAtividadeService: TipoAtividadeService) { }
 
   ngOnInit() {
     this.loadClientes();
+    this.loadTipoAtividadeList();
+    this.loadUsuariosList();
   }
 
   onSubmit(formulario: NgForm) {
     if (formulario.valid) {
-
+      
       this.chamadoService.createChamado(this.chamado).subscribe(
         id => {
           this.chamado = new Chamado();
-          this.showAlert();
+          //this.showAlert();
+          this.backLastPage()
         }
       );
     }
@@ -39,6 +55,21 @@ export class AbrirChamadoComponent implements OnInit {
     this.clienteService.getAllClientes().subscribe(
       clientes => {
         this.clientes = clientes;
+      });
+  }
+
+  loadUsuariosList(): void {
+    this.usuarioService.getAllUsers().subscribe(
+      usuarios => {
+        //console.log(grupos)
+        this.usuarios = usuarios;
+      });
+  }
+
+  loadTipoAtividadeList(): void {
+    this.tipoAtividadeService.getAllTipoAtividade().subscribe(
+      tiposAtividade => {
+        this.tiposAtividade = tiposAtividade;
       });
   }
 
@@ -52,6 +83,10 @@ export class AbrirChamadoComponent implements OnInit {
       this.aberto = false;
     }.bind(this), 3000);
 
+  }
+
+  backLastPage() {
+    this._location.back();
   }
 
 

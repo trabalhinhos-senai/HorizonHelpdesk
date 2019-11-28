@@ -6,7 +6,7 @@
         Chamado aberto com sucesso!
     </div>
 
-    <form #formChamado="ngForm" (ngSubmit)="onSubmit(formChamado)">
+    <form #formChamado="ngForm" (ngSubmit)="onSubmit(formChamado)" >
         <button type="submit" class="btn btn-dark mb-md-4" routerLink="/chamados">Voltar</button>
 
         <div class="form-row ">
@@ -18,8 +18,8 @@
             <div class="form-group col-md-6">
                 <label for="selectCliente" class="required">Cliente</label>
                 <select name="selectCliente" class="form-control" id="selectCliente" #selectCliente="ngModel"
-                    [(ngModel)]="chamado.clienteNome" required>
-                    <option *ngFor="let cliente of clientes">{{cliente.nomeCliente}}</option>
+                    [(ngModel)]="chamado.cliente" required>
+                    <option *ngFor="let cliente of clientes" [ngValue]="cliente">{{cliente.nomeCliente}}</option>
                 </select>
             </div>
         </div>
@@ -33,11 +33,8 @@
                 <label for="selectTipo" class="required">Tipo</label>
                 <div class="input-group">
                     <select name="selectTipo" id="selectTipo" class="form-control" #selectTipo="ngModel"
-                        [(ngModel)]="chamado.tipoAtividade" required>
-                        <option selected>Interno</option>
-                        <option>Melhoria</option>
-                        <option>Correção</option>
-                        <option>Problema</option>
+                    [(ngModel)]="chamado.tipoAtividade" required>
+                    <option *ngFor="let tipoAtividade of tiposAtividade" [ngValue]="tipoAtividade">{{tipoAtividade.descricao}}</option>
                     </select>
                     <div class="input-group-append ml-2">
                         <button class="btn btn-outline-success" type="button" data-toggle="modal"
@@ -59,12 +56,8 @@
             <div class="form-group col-md-4">
                 <label for="inputResponsavel">Responsável</label>
                 <select name="inputResponsavel" id="inputResponsavel" class="form-control" #inputResponsavel="ngModel"
-                    [(ngModel)]="chamado.responsavelNome">
-                    <option selected></option>
-                    <option>Gabriel</option>
-                    <option>Jaison</option>
-                    <option>Igor</option>
-                    <option>Leonardo</option>
+                [(ngModel)]="chamado.responsavel">
+                <option *ngFor="let usuario of usuarios" [ngValue]="usuario">{{usuario.nomeUsuario}}</option>
                 </select>
             </div>
             <div class="form-group col-md-2">

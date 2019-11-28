@@ -6,6 +6,7 @@ import { EnderecoService } from 'src/app/_Service/endereco.service';
 import { Estados } from 'src/app/_DTO/estados';
 import { Cidades } from 'src/app/_DTO/cidades';
 import { ClientesService } from '../clientes/clientes.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-cad-cliente',
@@ -20,7 +21,8 @@ export class CadClienteComponent implements OnInit {
   cadastrado = false;
 
   constructor(private clienteService: ClientesService,
-    private enderecoService: EnderecoService) { }
+              private enderecoService: EnderecoService,
+              private _location: Location) { }
 
   ngOnInit() {
     this.loadEstados();
@@ -33,7 +35,7 @@ export class CadClienteComponent implements OnInit {
         idCliente => {
           console.log(this.cliente)
           this.cliente = new Cliente();
-          //this.backLastPage();
+          this.backLastPage();
         }
       );
     }
@@ -59,6 +61,10 @@ export class CadClienteComponent implements OnInit {
         this.cidades = cidades;
       })
 
+  }
+
+  backLastPage() {
+    this._location.back();
   }
 
   showAlert() {

@@ -8,6 +8,4 @@ export class Usuario {
     loginUsuario: string;
     senhaUsuario: string;
     grupoAcesso: GrupoAcesso;
-    config: Config;
-    
 }

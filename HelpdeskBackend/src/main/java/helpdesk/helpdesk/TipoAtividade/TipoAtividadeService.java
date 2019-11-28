@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/tipoatividade")
+@RequestMapping("/api/tipoatividade")
 public class TipoAtividadeService {
 
 	public static final TipoAtividadeDTO[] DEFAULT_TIPOATIVIDADE = new TipoAtividadeDTO [] {

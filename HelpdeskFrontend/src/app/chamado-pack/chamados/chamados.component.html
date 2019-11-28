@@ -29,7 +29,7 @@
             <tr *ngFor="let chamado of chamados">
                 <td>{{chamado.id}}</td>
                 <td>{{chamado.titulo}}</td>
-                <td>{{chamado.solicitante}}</td>
+                <td>{{chamado.responsavel.nomeUsuario}}</td>
                 <td>{{chamado.status}}</td>
                 <td>{{chamado.dataAlvo}}</td>
                 <td>
