@@ -22,7 +22,7 @@
                     <label for="estadoCliente" class="required">Estado</label>
                     <select name="estadoCliente" id="estadoCliente" class="form-control" #estadoCliente="ngModel"
                         [(ngModel)]="cliente.estado" (click)="loadCidadePorEstado(estadoCliente.value)" required>
-                        <option *ngFor="let estado of estados" [ngValue]="estado.sigla">{{estado.sigla}}</option>
+                        <option *ngFor="let estado of estados" [ngValue]="estado.id">{{estado.sigla}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">

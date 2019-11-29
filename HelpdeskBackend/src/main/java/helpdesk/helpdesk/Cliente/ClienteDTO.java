@@ -2,7 +2,7 @@ package helpdesk.helpdesk.Cliente;
 
 public class ClienteDTO {
 
-	public static final ClienteDTO NULL_VALUE = new ClienteDTO(-1l, "", "", "", "", "", "", "", "", "", "");
+	public static final ClienteDTO NULL_VALUE = new ClienteDTO(-1l, "", "", "", "", "", "", "", "", "", "","Ativo");
 
 	private final Long id;
 	private final String nomeCliente;
@@ -15,9 +15,14 @@ public class ClienteDTO {
 	private final String bairro;
 	private final String cidade;
 	private final String estado;
+	private final String status;
+
+	
+
+	
 
 	public ClienteDTO(Long id, String nomeCliente, String cpfOuCnpj, String email, String telefone, String celular,
-			String endereco, String numero, String bairro, String cidade, String estado) {
+			String endereco, String numero, String bairro, String cidade, String estado, String status) {
 		super();
 		this.id = id;
 		this.nomeCliente = nomeCliente;
@@ -30,6 +35,11 @@ public class ClienteDTO {
 		this.bairro = bairro;
 		this.cidade = cidade;
 		this.estado = estado;
+		this.status = status;
+	}
+	
+	public String getStatus() {
+		return status;
 	}
 
 	public String getEmail() {

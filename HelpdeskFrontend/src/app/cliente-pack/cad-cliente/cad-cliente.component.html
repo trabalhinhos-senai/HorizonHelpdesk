@@ -22,7 +22,6 @@
                     <label for="estadoCliente" class="required">Estado</label>
                     <select name="estadoCliente" id="estadoCliente" class="form-control" #estadoCliente="ngModel"
                         [(ngModel)]="cliente.estado" [value]='42' (click)="loadCidadePorEstado(estadoCliente.value)" required>
-                        <option value="SC" selected>SC</option>
                         <option *ngFor="let estado of estados" [ngValue]="estado.id">{{estado.sigla}}</option>
                     </select>
                 </div>
@@ -30,7 +29,6 @@
                     <label for="cidadeCliente" class="required">Cidade</label>
                     <select name="cidadeCliente" id="cidadeCliente" class="form-control" #cidadeCliente="ngModel"
                         [(ngModel)]="cliente.cidade" required>
-                        <option value="Ascurra" selected>Ascurra</option>
                         <option *ngFor="let cidade of cidades" [ngValue]="cidade.nome">{{cidade.nome}}</option>
                     </select>
                 </div>

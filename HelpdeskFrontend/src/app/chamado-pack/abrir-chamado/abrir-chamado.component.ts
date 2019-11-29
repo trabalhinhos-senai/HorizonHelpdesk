@@ -8,7 +8,7 @@ import { TipoAtividade } from 'src/app/_DTO/tipoAtividade';
 import { Usuario } from 'src/app/usuario-pack/usuarios';
 import { UsuarioService } from 'src/app/usuario-pack/usuarios/usuario.service';
 import { TipoAtividadeService } from 'src/app/_Service/tipo-atividade.service';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-abrir-chamado',
@@ -27,10 +27,10 @@ export class AbrirChamadoComponent implements OnInit {
   public aberto = false;
 
   constructor(private _location: Location,
-              private chamadoService: ChamadosService,
-              private clienteService: ClientesService,
-              private usuarioService: UsuarioService,
-              private tipoAtividadeService: TipoAtividadeService) { }
+    private chamadoService: ChamadosService,
+    private clienteService: ClientesService,
+    private usuarioService: UsuarioService,
+    private tipoAtividadeService: TipoAtividadeService) { }
 
   ngOnInit() {
     this.loadClientes();
@@ -40,7 +40,7 @@ export class AbrirChamadoComponent implements OnInit {
 
   onSubmit(formulario: NgForm) {
     if (formulario.valid) {
-      
+
       this.chamadoService.createChamado(this.chamado).subscribe(
         id => {
           this.chamado = new Chamado();
@@ -71,6 +71,26 @@ export class AbrirChamadoComponent implements OnInit {
       tiposAtividade => {
         this.tiposAtividade = tiposAtividade;
       });
+  }
+
+  createAtividade(formulario: NgForm): void {
+    if (formulario.valid) {
+      this.tipoAtividadeService.createTipoAtividade(this.tipoAtividade).subscribe(
+        id => {
+          this.tipoAtividade = new TipoAtividade();
+          this.loadTipoAtividadeList();
+        });
+    }
+  }
+
+  updateAtividade(id: Number, atividade: TipoAtividade): void {
+    //if (formulario.valid) {
+      this.tipoAtividadeService.updateTipoAtividade(id, atividade).subscribe(
+        atividade => {
+          this.tipoAtividade = atividade;
+          this.loadTipoAtividadeList();
+        });
+    //}
   }
 
   showAlert() {

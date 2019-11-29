@@ -24,9 +24,10 @@ public class ClienteEntity {
 	private String email;
 	private String telefone;
 	private String celular;
+	private String status;
 
 	public ClienteEntity(Long id, String nomeCliente, String cpfOuCnpj, String endereco, String numero, String bairro,
-			String cidade, String estado, String email, String telefone, String celular) {
+			String cidade, String estado, String email, String telefone, String celular, String status) {
 		super();
 		this.id = id;
 		this.nomeCliente = nomeCliente;
@@ -39,10 +40,19 @@ public class ClienteEntity {
 		this.email = email;
 		this.telefone = telefone;
 		this.celular = celular;
+		this.status = status;
 	}
 
 	public ClienteEntity() {
 
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getStatus() {
+		return status;
 	}
 
 	@Override

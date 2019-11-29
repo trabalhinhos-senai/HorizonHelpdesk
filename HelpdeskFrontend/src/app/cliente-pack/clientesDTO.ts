@@ -10,6 +10,6 @@ export class Cliente {
     bairro: String;
     cidade: String;
     estado: String;
-
+    status: String;
 }
     

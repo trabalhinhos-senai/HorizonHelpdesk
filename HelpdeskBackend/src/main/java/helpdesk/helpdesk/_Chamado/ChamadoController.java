@@ -48,6 +48,7 @@ public class ChamadoController {
 		final String bairro = chamadoDTO.getCliente().getBairro();
 		final String cidade = chamadoDTO.getCliente().getCidade();
 		final String estado = chamadoDTO.getCliente().getEstado();
+		final String statusCliente = chamadoDTO.getCliente().getEstado();
 
 		final Long usuarioId = chamadoDTO.getResponsavel().getId();
 		final String nomeUsuario = chamadoDTO.getResponsavel().getNomeUsuario();
@@ -61,7 +62,7 @@ public class ChamadoController {
 
 		return new ChamadoEntity(id, solicitante, titulo, descricao, status, dataAbertura, dataAlvo, prioridadeChamado,
 				new ClienteEntity(clienteId, clienteNome, clienteCPFOuCNPJ, email, telefone, celular, endereco, numero,
-						bairro, cidade, estado),
+						bairro, cidade, estado, statusCliente),
 				new TipoAtividadeEntity(tipoId, descricaoAtiv), new UsuarioEntity(usuarioId, nomeUsuario, loginUsuario,
 						senhaUsuario, new GrupoAcessoEntity(grupoId, nomeGrupo)));
 	}
@@ -87,6 +88,7 @@ public class ChamadoController {
 		final String bairro = chamadoEntity.getCliente().getBairro();
 		final String cidade = chamadoEntity.getCliente().getCidade();
 		final String estado = chamadoEntity.getCliente().getEstado();
+		final String statusCliente = chamadoEntity.getCliente().getStatus();
 
 		final Long usuarioId = chamadoEntity.getResponsavel().getId();
 		final String nomeUsuario = chamadoEntity.getResponsavel().getNomeUsuario();
@@ -100,7 +102,7 @@ public class ChamadoController {
 
 		return new ChamadoDTO(id, solicitante, titulo, descricao, status, dataAbertura, dataAlvo, prioridadeChamado,
 			   new ClienteDTO(clienteId, clienteNome, clienteCPFOuCNPJ, email, telefone, celular, endereco, numero,
-							  bairro, cidade, estado),
+							  bairro, cidade, estado, statusCliente),
 			   new TipoAtividadeDTO(tipoId, descricaoAtiv), new UsuarioDTO(usuarioId, nomeUsuario, loginUsuario,
 							        senhaUsuario, new GrupoAcessoDTO(grupoId, nomeGrupo)));
 	}
@@ -125,7 +127,9 @@ public class ChamadoController {
 												   chamadoDTO.getCliente().getEstado(), 
 												   chamadoDTO.getCliente().getEmail(),
 												   chamadoDTO.getCliente().getTelefone(), 
-												   chamadoDTO.getCliente().getCelular()));
+												   chamadoDTO.getCliente().getCelular(),
+												   chamadoDTO.getCliente().getStatus()));
+		
 		
 		chamadoEntity.setTipoAtividade(new TipoAtividadeEntity(chamadoDTO.getTipoAtividade().getId(), 
 															   chamadoDTO.getTipoAtividade().getDescricao()));

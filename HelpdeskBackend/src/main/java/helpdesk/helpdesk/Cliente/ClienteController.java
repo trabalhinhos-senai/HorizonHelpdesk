@@ -5,13 +5,17 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Controller;
 
+import helpdesk.helpdesk._Chamado.ChamadoRepository;
+
 @Controller
 public class ClienteController {
 
 	private final ClienteRepository ClienteRepository;
+	private ChamadoRepository chamadoRepository;
 
-	ClienteController(final ClienteRepository ClienteRepository) {
+	ClienteController(final ClienteRepository ClienteRepository, final ChamadoRepository chamadoRepository) {
 		this.ClienteRepository = ClienteRepository;
+		this.chamadoRepository = chamadoRepository;
 	}
 
 	public static ClienteEntity toEntity(final ClienteDTO clienteDTO) {
@@ -26,8 +30,9 @@ public class ClienteController {
 		final String bairro = clienteDTO.getBairro();
 		final String cidade = clienteDTO.getCidade();
 		final String estado = clienteDTO.getEstado();
+		final String status = clienteDTO.getStatus();
 
-		return new ClienteEntity(id, nomeCliente, cpfOuCnpj,email,telefone,celular,endereco,numero,bairro,cidade,estado);
+		return new ClienteEntity(id, nomeCliente, cpfOuCnpj,email,telefone,celular,endereco,numero,bairro,cidade,estado,status);
 	}
 
 	private static ClienteDTO toDTO(final ClienteEntity clienteEntity) {
@@ -42,8 +47,9 @@ public class ClienteController {
 		final String bairro = clienteEntity.getBairro();
 		final String cidade = clienteEntity.getCidade();
 		final String estado = clienteEntity.getEstado();
+		final String status = clienteEntity.getStatus();
 
-		return new ClienteDTO(id, nomeCliente, cpfOuCnpj,email,telefone,celular,endereco,numero,bairro,cidade,estado);
+		return new ClienteDTO(id, nomeCliente, cpfOuCnpj,email,telefone,celular,endereco,numero,bairro,cidade,estado,status);
 	}
 
 	private static void updateEntityFromDTO(final ClienteDTO clienteDTO, final ClienteEntity clienteEntity) {
@@ -58,6 +64,7 @@ public class ClienteController {
 		clienteEntity.setBairro(clienteDTO.getBairro());
 		clienteEntity.setCidade(clienteDTO.getCidade());
 		clienteEntity.setEstado(clienteDTO.getEstado());
+		clienteEntity.setStatus(clienteDTO.getStatus());
 
 	}
 
