@@ -18,6 +18,9 @@ export class CadClienteComponent implements OnInit {
   private cliente: Cliente = new Cliente();
   private estados: Estados[];
   private cidades: Cidades[];
+
+  private UFId: Number;
+
   cadastrado = false;
 
   constructor(private clienteService: ClientesService,
@@ -53,14 +56,24 @@ export class CadClienteComponent implements OnInit {
       });
   }
 
-  loadCidadePorEstado(idUF) {
+  loadCidadePorEstado(estadoSigla) {
 
-    this.enderecoService.getCidadePorUF(idUF).subscribe(
-      cidades => {
-        console.log(cidades);
-        this.cidades = cidades;
-      })
+    
 
+    this.estados.forEach(element => {
+      if (estadoSigla === element.sigla) {
+        this.UFId = element.id
+
+        this.enderecoService.getCidadePorUF(this.UFId).subscribe(
+          cidades => {
+            console.log(cidades);
+            this.cidades = cidades;
+          })
+
+      } else {
+       // alert("Estado não encontrado")
+      }
+    });
   }
 
   backLastPage() {

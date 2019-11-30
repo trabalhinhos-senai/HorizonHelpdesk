@@ -32,7 +32,7 @@ public class ClienteController {
 		final String estado = clienteDTO.getEstado();
 		final String status = clienteDTO.getStatus();
 
-		return new ClienteEntity(id, nomeCliente, cpfOuCnpj,email,telefone,celular,endereco,numero,bairro,cidade,estado,status);
+		return new ClienteEntity(id, nomeCliente, cpfOuCnpj,endereco,numero,bairro,cidade,estado,email,telefone,celular,status);
 	}
 
 	private static ClienteDTO toDTO(final ClienteEntity clienteEntity) {
@@ -49,7 +49,7 @@ public class ClienteController {
 		final String estado = clienteEntity.getEstado();
 		final String status = clienteEntity.getStatus();
 
-		return new ClienteDTO(id, nomeCliente, cpfOuCnpj,email,telefone,celular,endereco,numero,bairro,cidade,estado,status);
+		return new ClienteDTO(id, nomeCliente, cpfOuCnpj,endereco,numero,bairro,cidade,estado,email,telefone,celular,status);
 	}
 
 	private static void updateEntityFromDTO(final ClienteDTO clienteDTO, final ClienteEntity clienteEntity) {

@@ -26,6 +26,9 @@ export class AbrirChamadoComponent implements OnInit {
   private usuarios: Usuario[];
   public aberto = false;
 
+  private formChamado: NgForm;
+  private today: String = "2019-01-01";
+
   constructor(private _location: Location,
     private chamadoService: ChamadosService,
     private clienteService: ClientesService,
@@ -35,7 +38,7 @@ export class AbrirChamadoComponent implements OnInit {
   ngOnInit() {
     this.loadClientes();
     this.loadTipoAtividadeList();
-    this.loadUsuariosList();
+    this.loadUsuariosList();    
   }
 
   onSubmit(formulario: NgForm) {
@@ -43,6 +46,7 @@ export class AbrirChamadoComponent implements OnInit {
 
       this.chamadoService.createChamado(this.chamado).subscribe(
         id => {
+          console.log(id)
           this.chamado = new Chamado();
           //this.showAlert();
           this.backLastPage()

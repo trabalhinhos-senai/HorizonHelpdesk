@@ -67,9 +67,14 @@ export class UsuarioService {
     return this.http.delete<Usuario>(this.apiURL + '/usuario/' + id, this.httpOptions)
     .pipe(
       retry(1),
-      catchError(this.handleError), 
+      catchError(this.deleteError), 
       share()
     )
+  }
+
+  deleteError() {
+    window.alert("Não foi possivel deletar este usuario, pois ele está em uso.")
+    return throwError("Não foi possivel deletar este usuario, pois ele está em uso.");
   }
 
   // Error handling

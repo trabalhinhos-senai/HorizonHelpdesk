@@ -26,22 +26,22 @@ import helpdesk.helpdesk.Usuario.UsuarioService;
 @RequestMapping("/api/chamado")
 public class ChamadoService {
 		
-	public static final ChamadoDTO[] DEFAULT_CHAMADO = new ChamadoDTO [] {
+	/*public static final ChamadoDTO[] DEFAULT_CHAMADO = new ChamadoDTO [] {
 			new ChamadoDTO(1l, "solicitante", "titulo", "descricao", "staus", null, null, "prioridade", 
 					ClienteService.DEFAULT_CLIENTE[0], TipoAtividadeService.DEFAULT_TIPOATIVIDADE[0] , UsuarioService.DEFAULT_USUARIO[0])
-		};
+		};*/
 	
 	private final ChamadoController chamadoController;
 	
 	ChamadoService(final ChamadoController chamadoController){
 		this.chamadoController = chamadoController;	
 		
-		try {
+		/*try {
 			Arrays.asList(ChamadoService.DEFAULT_CHAMADO).forEach(dto -> this.chamadoController.insertChamado(dto));
 		} catch (Exception e) {
 			
 			
-		}
+		}*/
 		
 	}
 	

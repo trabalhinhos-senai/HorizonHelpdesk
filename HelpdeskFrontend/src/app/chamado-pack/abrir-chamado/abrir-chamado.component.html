@@ -55,16 +55,16 @@
 
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label for="inputResponsavel">Responsável</label>
+                <label for="inputResponsavel" class="required">Responsável</label>
                 <select name="inputResponsavel" id="inputResponsavel" class="form-control" #inputResponsavel="ngModel"
-                    [(ngModel)]="chamado.responsavel">
+                    [(ngModel)]="chamado.responsavel" required>
                     <option *ngFor="let usuario of usuarios" [ngValue]="usuario">{{usuario.nomeUsuario}}</option>
                 </select>
             </div>
             <div class="form-group col-md-2">
-                <label for="inputPrioridade">Prioridade</label>
+                <label for="inputPrioridade" class="required">Prioridade</label>
                 <select name="inputPrioridade" id="inputPrioridade" class="form-control" #inputPrioridade="ngModel"
-                    [(ngModel)]="chamado.prioridadeChamado">
+                    [(ngModel)]="chamado.prioridadeChamado" required>
                     <option selected>Nenhuma</option>
                     <option>Baixa</option>
                     <option>Média</option>

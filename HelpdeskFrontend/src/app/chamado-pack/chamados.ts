@@ -9,8 +9,8 @@ export class Chamado {
     titulo: string;
     descricao: string;
     status: string;
-    dataAbertura: string;
-    dataAlvo: string;
+    dataAbertura: Date;
+    dataAlvo: Date;
     prioridadeChamado: string;
     cliente: Cliente;
     responsavel: Usuario;

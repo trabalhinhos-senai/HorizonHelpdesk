@@ -23,8 +23,8 @@ import helpdesk.helpdesk.OnInitDB;
 public class ClienteService {
 	
 	public static final ClienteDTO[] DEFAULT_CLIENTE = new ClienteDTO [] {
-			new ClienteDTO(1l, "Ponchielli Ind.", "110.220.330-40","123","456","789","101","112","131","141","151","Ativo"),
-			new ClienteDTO(2l, "Ximira e Peixola Ltda ", "20.330.440/0005-60","123","456","789","101","112","131","141","151","Ativo")
+			new ClienteDTO(1l, "Ponchielli Ind.","110.220.330-40","Rua Emilio Marquardt","305","Ribeirão Souto","Pomerode","SC","igor.felipe@ponchielli.com","+55 47 3387-7000","+55 47 99276-6776","Ativo"),
+			new ClienteDTO(2l, "Cartens, Ximira e Peixola", "22.512.532/0001-40","Rua Marques De Olinda","80","Botafogo","Rio de Janeiro","RJ","carstens@gmail.com","+55 21 3449-9604","","Ativo")
 		};
 	
 	private final ClienteController clienteController;

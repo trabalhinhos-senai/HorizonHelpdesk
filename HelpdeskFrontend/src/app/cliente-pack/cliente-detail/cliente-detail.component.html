@@ -3,7 +3,7 @@
 <div class="container my-md-3">
     <div class="justify-content-center d-flex h-100">
         <form #formCliente="ngForm" (ngSubmit)="onSubmit(formCliente)">
-            <button type="submit" class="btn btn-dark mb-md-4" routerLink="/clientes">Voltar</button>
+            <button type="submit" class="btn btn-dark my-sm-2 mb-md-4" routerLink="/clientes">Voltar</button>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -21,8 +21,8 @@
                 <div class="form-group col-md-2">
                     <label for="estadoCliente" class="required">Estado</label>
                     <select name="estadoCliente" id="estadoCliente" class="form-control" #estadoCliente="ngModel"
-                        [(ngModel)]="cliente.estado" (click)="loadCidadePorEstado(estadoCliente.value)" required>
-                        <option *ngFor="let estado of estados" [ngValue]="estado.id">{{estado.sigla}}</option>
+                    [(ngModel)]="cliente.estado" (click)="loadCidadePorEstado(estadoCliente.value)" required>
+                    <option *ngFor="let estado of estados" [ngValue]="estado.sigla">{{estado.sigla}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">

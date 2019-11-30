@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from './usuario.service';
 import { Usuario } from '../usuarios';
+import { Chamado } from 'src/app/chamado-pack/chamados';
 
 @Component({
   selector: 'app-usuario',
@@ -11,6 +12,7 @@ export class UsuarioComponent implements OnInit {
 
   private usuarios: Usuario[];
   private usuarioAtual = new Usuario;
+  private chamados: Chamado[];
 
   constructor(private usuarioService: UsuarioService) { }
 
@@ -21,6 +23,7 @@ export class UsuarioComponent implements OnInit {
   loadUsuarios(): void {
     this.usuarioService.getAllUsers().subscribe(
       usuarios => {
+
         this.usuarios = usuarios;
       });
   }
@@ -34,8 +37,6 @@ export class UsuarioComponent implements OnInit {
           this.usuarioAtual = usuario;
           this.loadUsuarios();
         });
-    } else {
-      console.log(this.usuarioAtual);
     }
 
   }

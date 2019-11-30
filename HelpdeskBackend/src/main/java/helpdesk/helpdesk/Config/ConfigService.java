@@ -26,7 +26,7 @@ public class ConfigService {
 private final ConfigController configController;
 	
 	public static final ConfigDTO[] DEFAULT_CONFIG = new ConfigDTO [] {
-			new ConfigDTO(1l, "Horizon Sistemas", "+55 47 9999-8888", "helpdesk@gmail.com", "Rua Frederico Guten")
+			new ConfigDTO(1l, "H-HelpDesk", "+55 47 9999-8888", "helpdesk@gmail.com", "Rua Frederico Guten")
 		};
 
 	ConfigService(final ConfigController configController){
