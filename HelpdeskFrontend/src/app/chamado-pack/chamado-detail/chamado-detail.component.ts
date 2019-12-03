@@ -84,6 +84,25 @@ export class ChamadoDetailComponent implements OnInit {
       });
   }
 
+  createAtividade(formulario: NgForm): void {
+    if (formulario.valid) {
+      //this.tipoAtividade =
+      this.tipoAtividadeService.createTipoAtividade(this.tipoAtividade).subscribe(
+        id => {
+          this.tipoAtividade = new TipoAtividade();
+          this.loadTipoAtividadeList();
+        });
+    }
+  }
+
+  updateAtividade(idAtiv: Number, atividadeAtual: TipoAtividade): void {
+      this.tipoAtividadeService.updateTipoAtividade(idAtiv, atividadeAtual).subscribe(
+        atividade => {
+         this.tipoAtividade = atividade;
+          this.loadTipoAtividadeList();
+        });
+  }
+
   getUsuario(id) {
     this.usuarioService.getUser(id).subscribe(
       usuario => {

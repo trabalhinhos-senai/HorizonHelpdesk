@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { Usuario } from '../usuario-pack/usuarios';
+import { UsuarioService } from '../usuario-pack/usuarios/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,8 @@ import { Usuario } from '../usuario-pack/usuarios';
 })
 export class LoginComponent implements OnInit {
 
-  //private usuario: Usuario = new Usuario();
+  
+  private usuario: Usuario = new Usuario();
 
   constructor(private authService: AuthService,
               private router: Router) {
@@ -24,9 +26,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  fazerLogin() {
-    //console.log(this.usuario);
-    //this.authService.fazerLogin(this.usuario);
+  fazerLogin(login: string, senha: string) {
+    this.authService.fazerLogin(login, senha);
   }
   
 }

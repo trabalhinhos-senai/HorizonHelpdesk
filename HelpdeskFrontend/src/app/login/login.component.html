@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">{{config.nomeEmpresa}}</a>
+    <a class="navbar-brand" href="#">HelpDesk</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado"
         aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
         <span class="navbar-toggler-icon"></span>
@@ -31,24 +31,24 @@
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
                         <input type="text" name="nome" id="nome" class="form-control input_user" value=""
-                            placeholder="username" [(ngModel)]="usuario.nome">
+                            placeholder="username" [(ngModel)]="usuario.loginUsuario">
                     </div>
                     <div class="input-group mb-2">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
                         <input type="password" name="senha" id="senha" class="form-control input_pass" value=""
-                            placeholder="password" [(ngModel)]="usuario.senha">
+                            placeholder="password" [(ngModel)]="usuario.senhaUsuario">
                     </div>
                 </form>
             </div>
             <div class="d-flex justify-content-center my-3 login_container">
-                <button type="submit" name="button" class="btn login_btn" (click)="fazerLogin()"> Login</button>
+                <button type="submit" name="button" class="btn login_btn" (click)="fazerLogin(usuario.loginUsuario, usuario.senhaUsuario)"> Login</button>
             </div>
         </div>
     </div>
     <div class="d-flex justify-content-center login_container m-3 alert" role="alert">
             Usuário: admin<br />
-            Senha: admin
+            Senha: admin123
         </div>
 </div>

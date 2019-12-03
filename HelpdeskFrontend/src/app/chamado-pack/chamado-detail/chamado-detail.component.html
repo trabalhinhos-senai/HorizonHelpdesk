@@ -2,7 +2,8 @@
 
 <div class="container my-md-3">
 
-    <form #formChamado="ngForm" (ngSubmit)="onSubmit(formChamado)" *ngIf="chamado.cliente && chamado.tipoAtividade && chamado.responsavel">
+    <form #formChamado="ngForm" (ngSubmit)="onSubmit(formChamado)"
+        *ngIf="chamado.cliente && chamado.tipoAtividade && chamado.responsavel">
         <button type="submit" class="btn btn-dark mb-md-4 my-sm-2" routerLink="/chamados">Voltar</button>
 
         <div class="form-row ">
@@ -13,8 +14,8 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="inputNomeCliente" class="required">Cliente</label>
-                <input name="inputNomeCliente" type="Text" class="form-control" id="inputNomeCliente" #inputNomeCliente="ngModel"
-                    [(ngModel)]="chamado.cliente.nomeCliente" required disabled>
+                <input name="inputNomeCliente" type="Text" class="form-control" id="inputNomeCliente"
+                    #inputNomeCliente="ngModel" [(ngModel)]="chamado.cliente.nomeCliente" required disabled>
             </div>
         </div>
         <div class="form-row">
@@ -28,7 +29,8 @@
                 <div class="input-group">
                     <select name="selectTipo" id="selectTipo" class="form-control" #selectTipo="ngModel"
                         [(ngModel)]="chamado.tipoAtividade.descricao" required>
-                        <option *ngFor="let tipoAtividade of tiposAtividade" [ngValue]="tipoAtividade.descricao">{{tipoAtividade.descricao}}</option>
+                        <option *ngFor="let tipoAtividade of tiposAtividade" [ngValue]="tipoAtividade.descricao">
+                            {{tipoAtividade.descricao}}</option>
                     </select>
                     <div class="input-group-append ml-2">
                         <button class="btn btn-outline-success" type="button" data-toggle="modal"
@@ -51,25 +53,25 @@
                 <label for="inputResponsavel">Responsável</label>
                 <select name="inputResponsavel" id="inputResponsavel" class="form-control" #inputResponsavel="ngModel"
                     [(ngModel)]="chamado.responsavel.nomeUsuario">
-                    <option *ngFor="let usuario of usuarios" [ngValue]="usuario.nomeUsuario">{{usuario.nomeUsuario}}</option>
+                    <option *ngFor="let usuario of usuarios" [ngValue]="usuario.nomeUsuario">{{usuario.nomeUsuario}}
+                    </option>
                 </select>
             </div>
             <div class="form-group col-md-2">
                 <label for="inputPrioridade">Prioridade</label>
                 <select name="inputPrioridade" id="inputPrioridade" class="form-control" #inputPrioridade="ngModel"
                     [(ngModel)]="chamado.prioridadeChamado">
-                    <option selected value="Nenhuma" >Nenhuma</option>
-                    <option value="Baixa" >Baixa</option>
-                    <option value="Média" >Média</option>
-                    <option value="Alta" >Alta</option>
-                    <option value="Crítica" >Crítica</option>
+                    <option selected value="Nenhuma">Nenhuma</option>
+                    <option value="Baixa">Baixa</option>
+                    <option value="Média">Média</option>
+                    <option value="Alta">Alta</option>
+                    <option value="Crítica">Crítica</option>
                 </select>
             </div>
             <div class="form-group col-md-3">
                 <label for="inputDataAbertura" class="required">Data abertura</label>
                 <input name="inputDataAbertura" type="date" class="form-control" id="inputDataAbertura"
-                    #inputDataAbertura="ngModel" [(ngModel)]="chamado.dataAbertura" required
-                    disabled>
+                    #inputDataAbertura="ngModel" [(ngModel)]="chamado.dataAbertura" required disabled>
             </div>
             <div class="form-group col-md-3">
                 <label for="inputDataAlvo">Data alvo</label>
@@ -90,7 +92,8 @@
             </div>
         </div>
 
-        <button id="btnAtualizarChamado" type="submit" class="btn btn-success mt-md-3" [disabled]="!formChamado.valid">Atualizar chamado</button>
+        <button id="btnAtualizarChamado" type="submit" class="btn btn-success mt-md-3"
+            [disabled]="!formChamado.valid">Atualizar chamado</button>
     </form>
 </div>
 
@@ -106,14 +109,16 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form #formCadTipo="ngForm" (ngSubmit)="onSubmit(formCadTipo)">
+                <form #formTipoAtividade="ngForm" (ngSubmit)="createAtividade(formTipoAtividade)" *ngIf="chamado.tipoAtividade">
                     <label for="inputCadTipo" class="required">Tipo</label>
-                    <input name="inputCadTipo" type="text" class="form-control" id="inputCadTipo" required>
+                    <input name="inputCadTipo" type="text" class="form-control" id="inputCadTipo"
+                        #inputCadTipo="ngModel" value="{{chamado.tipoAtividade.descricao}}" [(ngModel)]="tipoAtividade.descricao" required>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateAtividade(chamado.tipoAtividade.id, tipoAtividade)">Editar</button>
+                        <button type="submit" class="btn btn-success"
+                            [disabled]="!formTipoAtividade.valid">Adicionar</button>
+                    </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Editar</button>
-                <button type="submit" class="btn btn-success">Adicionar</button>
             </div>
         </div>
     </div>

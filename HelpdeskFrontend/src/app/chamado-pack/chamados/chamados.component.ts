@@ -33,7 +33,16 @@ export class ChamadosComponent implements OnInit {
   }
 
   procuraChamado(nrChamado: string){
-    this.router.navigate(['/chamado-detalhe/' + nrChamado])
+
+      let id: Number;
+      id = Number(nrChamado);
+
+      if (this.chamados.length >= id && id > 0) {
+        this.router.navigate(['/chamado-detalhe/' + nrChamado])
+      } else {
+        alert("Chamado não encontrado.")
+      }
+    
   }
 
 }

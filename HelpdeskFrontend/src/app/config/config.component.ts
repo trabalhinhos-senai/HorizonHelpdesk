@@ -29,7 +29,7 @@ export class ConfigComponent implements OnInit {
       this.configService.updateConfig(this.config.id, this.config).subscribe(
         config => {
           this.config = config;
-          this.backLastPage();
+          alert("Configuração salva com sucesso!")
         }
       );
     }

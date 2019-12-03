@@ -88,13 +88,11 @@ export class AbrirChamadoComponent implements OnInit {
   }
 
   updateAtividade(id: Number, atividade: TipoAtividade): void {
-    //if (formulario.valid) {
       this.tipoAtividadeService.updateTipoAtividade(id, atividade).subscribe(
         atividade => {
           this.tipoAtividade = atividade;
           this.loadTipoAtividadeList();
         });
-    //}
   }
 
   showAlert() {

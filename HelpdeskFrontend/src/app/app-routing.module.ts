@@ -14,17 +14,17 @@ import { ClienteDetailComponent } from './cliente-pack/cliente-detail/cliente-de
 import { ConfigComponent } from './config/config.component';
 
 const routes: Routes = [
-  { path: 'abrir-chamado', component: AbrirChamadoComponent/*, canActivate: [AuthGuard]*/ },
-  { path: 'chamados', component: ChamadosComponent/*, canActivate: [AuthGuard]*/ },
+  { path: 'abrir-chamado', component: AbrirChamadoComponent, canActivate: [AuthGuard] },
+  { path: 'chamados', component: ChamadosComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'usuarios', component: UsuarioComponent },
-  { path: 'cad-usuario', component: CadUsuarioComponent },
-  { path: 'clientes', component: ClientesComponent },
-  { path: 'cad-cliente', component: CadClienteComponent },
-  { path: 'config', component: ConfigComponent },
-  { path: 'chamado-detalhe/:id', component: ChamadoDetailComponent },
-  { path: 'usuario-detalhe/:id', component: UsuarioDetailComponent },
-  { path: 'cliente-detalhe/:id', component: ClienteDetailComponent },
+  { path: 'usuarios', component: UsuarioComponent, canActivate: [AuthGuard] },
+  { path: 'cad-usuario', component: CadUsuarioComponent, canActivate: [AuthGuard] },
+  { path: 'clientes', component: ClientesComponent, canActivate: [AuthGuard] },
+  { path: 'cad-cliente', component: CadClienteComponent, canActivate: [AuthGuard] },
+  { path: 'config', component: ConfigComponent, canActivate: [AuthGuard] },
+  { path: 'chamado-detalhe/:id', component: ChamadoDetailComponent, canActivate: [AuthGuard] },
+  { path: 'usuario-detalhe/:id', component: UsuarioDetailComponent, canActivate: [AuthGuard] },
+  { path: 'cliente-detalhe/:id', component: ClienteDetailComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/chamados', pathMatch: 'full' }
 ];
 
