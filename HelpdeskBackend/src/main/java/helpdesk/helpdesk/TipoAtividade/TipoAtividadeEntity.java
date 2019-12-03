@@ -13,7 +13,7 @@ public class TipoAtividadeEntity {
 	@Column
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column
+	
 	private String descricao;
 	
 	TipoAtividadeEntity() {

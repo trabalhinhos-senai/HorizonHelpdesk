@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
 import helpdesk.helpdesk.Config.ConfigDTO;
@@ -95,9 +97,17 @@ public class UsuarioController {
 	}
 	
 	Long insertUsuario(final UsuarioDTO usuarioDTO) {
-		final UsuarioEntity usuarioEntity = UsuarioController.toEntity(usuarioDTO);
+		
+	  	if(this.usuarioRepository.existsByLoginUsuario(usuarioDTO.getLoginUsuario())) {
+	  		
+	  		return null;
+	  	}
+	  	
+	  	final UsuarioEntity usuarioEntity = UsuarioController.toEntity(usuarioDTO);
 		this.usuarioRepository.save(usuarioEntity);
-		return usuarioEntity.getId();
+	  	return usuarioEntity.getId();
+		
+		
 	}
 	
 	UsuarioDTO updateUsuario(final Long id, final UsuarioDTO usuarioDTO) {
