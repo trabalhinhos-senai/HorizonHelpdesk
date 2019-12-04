@@ -4,4 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface TipoAtividadeRepository extends CrudRepository<TipoAtividadeEntity, Long> {
 
+	boolean existsByDescricao(String descricao);
 }

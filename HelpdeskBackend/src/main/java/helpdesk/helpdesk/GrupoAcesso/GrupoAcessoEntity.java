@@ -14,7 +14,7 @@ public class GrupoAcessoEntity {
 	@Column
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	
 	private String nomeGrupo;
 	
 	protected GrupoAcessoEntity() {
