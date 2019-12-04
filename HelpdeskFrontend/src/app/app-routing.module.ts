@@ -25,7 +25,8 @@ const routes: Routes = [
   { path: 'chamado-detalhe/:id', component: ChamadoDetailComponent, canActivate: [AuthGuard] },
   { path: 'usuario-detalhe/:id', component: UsuarioDetailComponent, canActivate: [AuthGuard] },
   { path: 'cliente-detalhe/:id', component: ClienteDetailComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: '/chamados', pathMatch: 'full' }
+  { path: '', redirectTo: '/chamados', pathMatch: 'full' },
+  {path: '**', redirectTo: '/login'}
 ];
 
 @NgModule({
