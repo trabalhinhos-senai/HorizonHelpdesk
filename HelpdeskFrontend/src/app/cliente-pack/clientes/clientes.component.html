@@ -21,8 +21,8 @@
                 <td>{{cliente.id}}</td>
                 <td>{{cliente.nomeCliente}}</td>
                 <td>{{cliente.email}}</td>
-                <td>{{cliente.telefone}}</td>
-                <td>{{cliente.celular}}</td>
+                <td>{{cliente.telefone | mask: '(00) 0000-0000'}}</td>
+                <td>{{cliente.celular | mask: '(00) 00000-0000'}}</td>
                 <td align="left">
                     <button type="button" class="btn btn-success p-1 mr-1" routerLink="/cliente-detalhe/{{cliente.id}}">
                         <img src="/assets/icons/pencil_tip_32px_white.png" width="20" />

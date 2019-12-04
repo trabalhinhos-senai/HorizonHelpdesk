@@ -9,8 +9,10 @@ import { UsuarioService } from '../usuario-pack/usuarios/usuario.service';
 export class AuthService {
 
   private usuarios: Usuario[];
+  private usuario: Usuario = new Usuario();
+  private usuarioConectado: Usuario = new Usuario();
   private usuarioAutenticado: boolean = false;
-
+  
   constructor(private router: Router,
     private usuarioService: UsuarioService) { }
 
@@ -24,8 +26,13 @@ export class AuthService {
 
             if (usuarioAtual.loginUsuario === login && usuarioAtual.senhaUsuario === senha) {
               this.usuarioAutenticado = true;
+              
               this.router.navigate(['/chamados']);
-              console.log(this.usuarioAutenticado)
+
+              this.usuarioConectado = usuarioAtual;
+
+              localStorage.setItem("usuarioAtual", JSON.stringify(usuarioAtual));
+
               break;
             } else {
               this.usuarioAutenticado = false;
@@ -43,7 +50,19 @@ export class AuthService {
     }
 
   usuarioEstaAutenticado() {
+    
     return this.usuarioAutenticado;
+  }
+
+  getNomeUsuarioAtual() {
+    return this.usuarioConectado.nomeUsuario
+  }
+
+  logoutUsuario() {
+    console.log(!this.usuarioAutenticado)
+    localStorage.removeItem("usuarioAtual");
+    this.usuarioAutenticado = false;
+    
   }
 
 }

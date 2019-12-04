@@ -21,6 +21,9 @@ import { ChamadoDetailComponent } from './chamado-pack/chamado-detail/chamado-de
 import { UsuarioDetailComponent } from './usuario-pack/usuario-detail/usuario-detail.component';
 import { ClienteDetailComponent } from './cliente-pack/cliente-detail/cliente-detail.component';
 import { ConfigComponent } from './config/config.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
+export var options: Partial<IConfig> | (() => Partial<IConfig>);
 
 @NgModule({
   declarations: [
@@ -45,7 +48,8 @@ import { ConfigComponent } from './config/config.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMaskModule.forRoot(options)
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

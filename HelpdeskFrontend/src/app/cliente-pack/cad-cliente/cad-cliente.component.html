@@ -12,9 +12,9 @@
                         placeholder="Nome do Cliente" #nomeCliente="ngModel" [(ngModel)]="cliente.nomeCliente" required>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="cpfCnpjCliente" class="required">CNPJ / CPF</label>
+                    <label for="cpfCnpjCliente" class="required">CPF</label>
                     <input name="cpfCnpjCliente" type="text" class="form-control" id="cpfCnpjCliente"
-                        placeholder="CNPJ / CPF" #cpfCnpjCliente="ngModel" [(ngModel)]="cliente.cpfOuCnpj" required>
+                        placeholder="CPF" #cpfCnpjCliente="ngModel" [(ngModel)]="cliente.cpfOuCnpj" mask="000.000.000-00" required>
                 </div>
             </div>
             <div class="form-row">
@@ -59,12 +59,12 @@
                 <div class="form-group col-md-3">
                     <label for="telefoneCliente">Telefone</label>
                     <input name="telefoneCliente" type="text" class="form-control" id="telefoneCliente"
-                        placeholder="3333-3333" #telefoneCliente="ngModel" [(ngModel)]="cliente.telefone">
+                        placeholder="(47)3333-3333" #telefoneCliente="ngModel" [(ngModel)]="cliente.telefone" mask="(00)0000-0000">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="celularCliente">Celular</label>
                     <input name="celularCliente" type="text" class="form-control" id="celularCliente"
-                        placeholder="99999-9999" #celularCliente="ngModel" [(ngModel)]="cliente.celular">
+                        placeholder="(47)99999-9999" #celularCliente="ngModel" [(ngModel)]="cliente.celular" mask="(00)00000-0000">
                 </div>
             </div>
             <button type="submit" class="btn btn-success" [disabled]="!formCliente.valid">Cadastrar cliente</button>

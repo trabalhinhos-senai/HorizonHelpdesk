@@ -10,9 +10,9 @@ import { UsuarioService } from '../usuario-pack/usuarios/usuario.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   
   private usuario: Usuario = new Usuario();
+  private usuarioAtual: Usuario = new Usuario();
 
   constructor(private authService: AuthService,
               private router: Router) {
@@ -24,6 +24,12 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
+
+    this.usuarioAtual = JSON.parse(localStorage.getItem('usuarioAtual'))
+
+    this.fazerLogin(this.usuarioAtual.loginUsuario, this.usuarioAtual.senhaUsuario);
+
+    //console.log(JSON.parse(localStorage.getItem('usuarioAtual')))
   }
 
   fazerLogin(login: string, senha: string) {

@@ -29,6 +29,9 @@ export class ConfigComponent implements OnInit {
       this.configService.updateConfig(this.config.id, this.config).subscribe(
         config => {
           this.config = config;
+
+          location.reload();
+
           alert("Configuração salva com sucesso!")
         }
       );
@@ -46,10 +49,6 @@ export class ConfigComponent implements OnInit {
 
         this.configList = config;
       });
-  }
-
-  backLastPage() {
-    this._location.back();
   }
 
 }

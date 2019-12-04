@@ -44,14 +44,20 @@ export class AbrirChamadoComponent implements OnInit {
   onSubmit(formulario: NgForm) {
     if (formulario.valid) {
 
-      this.chamadoService.createChamado(this.chamado).subscribe(
-        id => {
-          console.log(id)
-          this.chamado = new Chamado();
-          //this.showAlert();
-          this.backLastPage()
-        }
-      );
+      if (this.chamado.dataAlvo >= this.chamado.dataAbertura) {
+        this.chamadoService.createChamado(this.chamado).subscribe(
+          id => {
+            console.log(id)
+            this.chamado = new Chamado();
+            //this.showAlert();
+            this.backLastPage()
+          }
+        );
+      } else {
+        alert("Data alvo é menor que a data de abertura");
+      }
+
+
     }
   }
 
@@ -93,6 +99,10 @@ export class AbrirChamadoComponent implements OnInit {
           this.tipoAtividade = atividade;
           this.loadTipoAtividadeList();
         });
+  }
+
+  getDateNow() {
+    return new Date();
   }
 
   showAlert() {

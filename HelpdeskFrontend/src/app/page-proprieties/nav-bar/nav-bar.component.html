@@ -21,9 +21,9 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <div class="mx-md-3">
-                <span class="text-white">User</span>
+                <span class="text-white">{{ usuarioAtual() }}</span>
             </div>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="button" routerLink="/login">Logout</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="logout()" routerLink="/login">Logout</button>
         </form>
     </div>
 </nav>

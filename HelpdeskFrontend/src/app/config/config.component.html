@@ -3,7 +3,6 @@
 <div class="container h-100 center-div my-md-3">
     <div class="d-flex justify-content-center h-100">
         <form #formConfig="ngForm" (ngSubmit)="onSubmit(formConfig)" class="col-8">
-            <button type="button" class="btn btn-dark mb-md-4" (click)="backLastPage()">Voltar</button>
 
             <div class="form-row">
                 <div class="form-group col-md-12">
@@ -28,7 +27,7 @@
                 <div class="form-group col-md-6">
                     <label for="inputTelefoneEmpresa" class="required">Telefone</label>
                     <input name="inputTelefoneEmpresa" type="tel" class="form-control" id="inputTelefoneEmpresa" required
-                        #inputTelefoneEmpresa="ngModel" [(ngModel)]="config.telefoneEmpresa">
+                        #inputTelefoneEmpresa="ngModel" [(ngModel)]="config.telefoneEmpresa" mask="(00)0000-0000">
                 </div>
             </div>
             <button type="submit" class="btn btn-success mt-md-3" [disabled]="!formConfig.valid">

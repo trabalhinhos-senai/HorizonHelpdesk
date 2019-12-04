@@ -29,7 +29,7 @@ export class ChamadosComponent implements OnInit {
     this.chamadoService.getAllChamados().subscribe(
       chamados => {
         this.chamados = chamados;
-        console.log(this.chamados)});
+      });
   }
 
   procuraChamado(nrChamado: string){
